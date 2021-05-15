@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "nx-linter",
+  "version": "0.0.1",
+  "generators": {
+    "nx-linter": {
+      "factory": "./src/generators/nx-linter/generator",
+      "schema": "./src/generators/nx-linter/schema.json",
+      "description": "nx-linter generator"
+    }
+  }
+}

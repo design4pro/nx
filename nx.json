@@ -12,11 +12,15 @@
     }
   },
   "projects": {
-    "nx-custom-webpack": { "tags": [] },
+    "nx-custom-webpack": { "tags": ["webpack"] },
     "nx-custom-webpack-e2e": {
-      "tags": [],
+      "tags": ["webpack"],
       "implicitDependencies": ["nx-custom-webpack"]
-    }
+    },
+    "nx-linter": { "tags": ["linter"] },
+    "nx-linter-e2e": { "tags": [], "implicitDependencies": ["nx-linter"] },
+    "nx-strapi": { "tags": ["strapi"] },
+    "nx-strapi-e2e": { "tags": [], "implicitDependencies": ["nx-strapi"] }
   },
   "workspaceLayout": { "appsDir": "e2e", "libsDir": "packages" }
 }

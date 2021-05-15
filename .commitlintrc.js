@@ -28,7 +28,10 @@ module.exports = {
       [
           'docs',
           'test',
-          'nx-custom-webpack'
+          'package',
+          'nx-custom-webpack',
+          'nx-linter',
+          'nx-strapi'
         ],
     ],
   },
