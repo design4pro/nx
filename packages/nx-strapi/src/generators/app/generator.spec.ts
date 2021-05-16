@@ -2,13 +2,13 @@ import { readProjectConfiguration, Tree } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import * as generateStrapi from 'strapi-generate-new';
 import generator from './generator';
-import { NxStrapiPluginGeneratorSchema } from './schema';
+import { NxStrapiGeneratorSchema } from './schema';
 
 jest.mock('strapi-generate-new');
 
 describe('strapi generator', () => {
   let appTree: Tree;
-  const options: NxStrapiPluginGeneratorSchema = { name: 'test' };
+  const options: NxStrapiGeneratorSchema = { name: 'test' };
 
   beforeEach(() => {
     appTree = createTreeWithEmptyWorkspace();

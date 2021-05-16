@@ -9,16 +9,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/nx-custom-webpack/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/nx-custom-webpack/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/packages/nx-custom-webpack"
-          ],
+          "outputs": ["coverage/packages/nx-custom-webpack"],
           "options": {
             "jestConfig": "packages/nx-custom-webpack/jest.config.js",
             "passWithNoTests": true
@@ -26,9 +22,7 @@
         },
         "build": {
           "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/packages/nx-custom-webpack",
             "tsConfig": "packages/nx-custom-webpack/tsconfig.lib.json",
@@ -86,16 +80,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/nx-linter/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/nx-linter/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/packages/nx-linter"
-          ],
+          "outputs": ["coverage/packages/nx-linter"],
           "options": {
             "jestConfig": "packages/nx-linter/jest.config.js",
             "passWithNoTests": true
@@ -103,9 +93,7 @@
         },
         "build": {
           "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/packages/nx-linter",
             "tsConfig": "packages/nx-linter/tsconfig.lib.json",
@@ -129,6 +117,17 @@
                 "output": "."
               }
             ]
+          }
+        },
+        "release": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx semantic-release"
+              }
+            ],
+            "cwd": "packages/nx-linter"
           }
         }
       }
@@ -157,16 +156,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/nx-strapi/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/nx-strapi/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/packages/nx-strapi"
-          ],
+          "outputs": ["coverage/packages/nx-strapi"],
           "options": {
             "jestConfig": "packages/nx-strapi/jest.config.js",
             "passWithNoTests": true
@@ -174,9 +169,7 @@
         },
         "build": {
           "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/packages/nx-strapi",
             "tsConfig": "packages/nx-strapi/tsconfig.lib.json",
@@ -200,6 +193,17 @@
                 "output": "."
               }
             ]
+          }
+        },
+        "release": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx semantic-release"
+              }
+            ],
+            "cwd": "packages/nx-strapi"
           }
         }
       }

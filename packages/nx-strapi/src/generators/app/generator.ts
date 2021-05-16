@@ -7,9 +7,9 @@ import {
   Tree,
 } from '@nrwl/devkit';
 import * as generateStrapi from 'strapi-generate-new';
-import { NxStrapiPluginGeneratorSchema } from './schema';
+import { NxStrapiGeneratorSchema } from './schema';
 
-interface NormalizedSchema extends NxStrapiPluginGeneratorSchema {
+interface NormalizedSchema extends NxStrapiGeneratorSchema {
   projectName: string;
   projectRoot: string;
   projectDirectory: string;
@@ -18,7 +18,7 @@ interface NormalizedSchema extends NxStrapiPluginGeneratorSchema {
 
 function normalizeOptions(
   host: Tree,
-  options: NxStrapiPluginGeneratorSchema
+  options: NxStrapiGeneratorSchema
 ): NormalizedSchema {
   const name = names(options.name).fileName;
   const projectDirectory = options.directory
@@ -43,7 +43,7 @@ function normalizeOptions(
 
 export default async function (
   host: Tree,
-  options: NxStrapiPluginGeneratorSchema
+  options: NxStrapiGeneratorSchema
 ): Promise<void> {
   const normalizedOptions = normalizeOptions(host, options);
 
@@ -53,10 +53,10 @@ export default async function (
     sourceRoot: `${normalizedOptions.projectRoot}/src`,
     targets: {
       build: {
-        executor: '@design4pro/nx-strapi-plugin:build',
+        executor: '@design4pro/nx-strapi:build',
       },
       serve: {
-        executor: '@design4pro/nx-strapi-plugin:develop',
+        executor: '@design4pro/nx-strapi:develop',
       },
     },
     tags: normalizedOptions.parsedTags,
