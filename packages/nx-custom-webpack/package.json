@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/design4pro/nx-custom-webpack.git"
+    "url": "git+https://github.com/design4pro/nx.git"
   },
   "author": {
     "name": "Rafał Wolak",
@@ -16,9 +16,9 @@
     "url": "https://www.design4.pro"
   },
   "bugs": {
-    "url": "https://github.com/design4pro/nx-custom-webpack/issues/"
+    "url": "https://github.com/design4pro/nx/issues/"
   },
-  "homepage": "https://github.com/design4pro/nx-custom-webpack#readme",
+  "homepage": "https://github.com/design4pro/nx#readme",
   "main": "src/index.js",
   "builders": "./builders.json",
   "dependencies": {

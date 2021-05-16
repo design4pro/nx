@@ -3,10 +3,16 @@
   "name": "nx-linter",
   "version": "0.0.1",
   "generators": {
-    "nx-linter": {
-      "factory": "./src/generators/nx-linter/generator",
-      "schema": "./src/generators/nx-linter/schema.json",
-      "description": "nx-linter generator"
+    "init": {
+      "factory": "./src/generators/init/generator",
+      "schema": "./src/generators/init/schema.json",
+      "description": "Add stylelint configuration and dependencies to the workspace",
+      "hidden": true
+    },
+    "configuration": {
+      "factory": "./src/generators/configuration/generator",
+      "schema": "./src/generators/configuration/schema.json",
+      "description": "Add stylelint configuration to a project"
     }
   }
 }
