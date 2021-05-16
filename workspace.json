@@ -9,16 +9,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/nx-custom-webpack/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/nx-custom-webpack/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/packages/nx-custom-webpack"
-          ],
+          "outputs": ["coverage/packages/nx-custom-webpack"],
           "options": {
             "jestConfig": "packages/nx-custom-webpack/jest.config.js",
             "passWithNoTests": true
@@ -26,9 +22,7 @@
         },
         "build": {
           "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/packages/nx-custom-webpack",
             "tsConfig": "packages/nx-custom-webpack/tsconfig.lib.json",
@@ -43,15 +37,21 @@
               },
               {
                 "input": "./packages/nx-custom-webpack",
-                "glob": "generators.json",
-                "output": "."
-              },
-              {
-                "input": "./packages/nx-custom-webpack",
-                "glob": "executors.json",
+                "glob": "builders.json",
                 "output": "."
               }
             ]
+          }
+        },
+        "release": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx semantic-release"
+              }
+            ],
+            "cwd": "packages/nx-custom-webpack"
           }
         }
       }
@@ -68,6 +68,158 @@
             "npmPackageName": "@design4pro/nx-custom-webpack",
             "pluginOutputPath": "dist/packages/nx-custom-webpack",
             "jestConfig": "e2e/nx-custom-webpack-e2e/jest.config.js"
+          }
+        }
+      }
+    },
+    "nx-linter": {
+      "root": "packages/nx-linter",
+      "sourceRoot": "packages/nx-linter/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["packages/nx-linter/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/nx-linter"],
+          "options": {
+            "jestConfig": "packages/nx-linter/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/nx-linter",
+            "tsConfig": "packages/nx-linter/tsconfig.lib.json",
+            "packageJson": "packages/nx-linter/package.json",
+            "main": "packages/nx-linter/src/index.ts",
+            "assets": [
+              "packages/nx-linter/*.md",
+              {
+                "input": "./packages/nx-linter/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/nx-linter",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/nx-linter",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "release": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx semantic-release"
+              }
+            ],
+            "cwd": "packages/nx-linter"
+          }
+        }
+      }
+    },
+    "nx-linter-e2e": {
+      "projectType": "application",
+      "root": "e2e/nx-linter-e2e",
+      "sourceRoot": "e2e/nx-linter-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "nx-linter:build",
+            "npmPackageName": "@design4pro/nx-linter",
+            "pluginOutputPath": "dist/packages/nx-linter",
+            "jestConfig": "e2e/nx-linter-e2e/jest.config.js"
+          }
+        }
+      }
+    },
+    "nx-strapi": {
+      "root": "packages/nx-strapi",
+      "sourceRoot": "packages/nx-strapi/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["packages/nx-strapi/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/nx-strapi"],
+          "options": {
+            "jestConfig": "packages/nx-strapi/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/nx-strapi",
+            "tsConfig": "packages/nx-strapi/tsconfig.lib.json",
+            "packageJson": "packages/nx-strapi/package.json",
+            "main": "packages/nx-strapi/src/index.ts",
+            "assets": [
+              "packages/nx-strapi/*.md",
+              {
+                "input": "./packages/nx-strapi/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/nx-strapi",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/nx-strapi",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "release": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx semantic-release"
+              }
+            ],
+            "cwd": "packages/nx-strapi"
+          }
+        }
+      }
+    },
+    "nx-strapi-e2e": {
+      "projectType": "application",
+      "root": "e2e/nx-strapi-e2e",
+      "sourceRoot": "e2e/nx-strapi-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "nx-strapi:build",
+            "npmPackageName": "@design4pro/nx-strapi",
+            "pluginOutputPath": "dist/packages/nx-strapi",
+            "jestConfig": "e2e/nx-strapi-e2e/jest.config.js"
           }
         }
       }

@@ -1,7 +1,38 @@
 {
   "name": "@design4pro/nx-custom-webpack",
-  "version": "0.0.1",
+  "version": "1.0.4",
+  "keywords": [
+    "nx",
+    "plugin",
+    "webpack"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/design4pro/nx.git"
+  },
+  "author": {
+    "name": "Rafał Wolak",
+    "email": "r.wolak@design4.pro",
+    "url": "https://www.design4.pro"
+  },
+  "bugs": {
+    "url": "https://github.com/design4pro/nx/issues/"
+  },
+  "homepage": "https://github.com/design4pro/nx#readme",
   "main": "src/index.js",
-  "generators": "./generators.json",
-  "executors": "./executors.json"
+  "builders": "./builders.json",
+  "dependencies": {
+    "@angular-devkit/architect": "^0.1200.0-rc.1",
+    "@angular-devkit/build-angular": "^12.0.0-rc.1",
+    "@angular-devkit/core": "^12.0.0-rc.1",
+    "@types/lodash": "^4.14.168",
+    "lodash": "^4.17.21",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths": "^3.9.0",
+    "webpack": "^5.36.2",
+    "webpack-merge": "^5.7.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

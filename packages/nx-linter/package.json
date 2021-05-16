@@ -1,0 +1,33 @@
+{
+  "name": "@design4pro/nx-linter",
+  "version": "0.0.0",
+  "description": "Lint Plugin for Nx",
+  "keywords": [
+    "nx",
+    "plugin",
+    "webpack"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/design4pro/nx.git"
+  },
+  "author": {
+    "name": "Rafał Wolak",
+    "email": "r.wolak@design4.pro",
+    "url": "https://www.design4.pro"
+  },
+  "bugs": {
+    "url": "https://github.com/design4pro/nx/issues/"
+  },
+  "homepage": "https://github.com/design4pro/nx#readme",
+  "main": "src/index.js",
+  "generators": "./generators.json",
+  "executors": "./executors.json",
+  "dependencies": {
+    "@nrwl/devkit": "^12.0.0"
+  },
+  "peerDependencies": {
+    "@nrwl/workspace": "^12.0.0",
+    "stylelint": ">=13.0.0"
+  }
+}
