@@ -1,4 +1,4 @@
-import { getSystemPath, Path } from '@angular-devkit/core';
+import { getSystemPath, logging, Path } from '@angular-devkit/core';
 import { Configuration } from 'webpack';
 import { CustomWebpackBrowserSchema } from './browser';
 import { CustomWebpackBuilderConfig } from './custom-webpack-builder-config';
@@ -28,7 +28,8 @@ export class CustomWebpackBuilder {
     config: CustomWebpackBuilderConfig,
     baseWebpackConfig: Configuration,
     buildOptions: any,
-    targetOptions: TargetOptions
+    targetOptions: TargetOptions,
+    logger: logging.LoggerApi
   ): Promise<Configuration> {
     if (!config) {
       return baseWebpackConfig;
@@ -37,7 +38,11 @@ export class CustomWebpackBuilder {
     const webpackConfigPath = config.path || defaultWebpackConfigPath;
     const path = `${getSystemPath(root)}/${webpackConfigPath}`;
     const tsConfig = `${getSystemPath(root)}/${buildOptions.tsConfig}`;
-    const configOrFactoryOrPromise = resolveCustomWebpackConfig(path, tsConfig);
+    const configOrFactoryOrPromise = resolveCustomWebpackConfig(
+      path,
+      tsConfig,
+      logger
+    );
 
     if (typeof configOrFactoryOrPromise === 'function') {
       // That exported function can be synchronous either
@@ -69,9 +74,10 @@ export class CustomWebpackBuilder {
 
 function resolveCustomWebpackConfig(
   path: string,
-  tsConfig: string
+  tsConfig: string,
+  logger: logging.LoggerApi
 ): CustomWebpackConfig {
-  tsNodeRegister(path, tsConfig);
+  tsNodeRegister(path, tsConfig, logger);
 
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const customWebpackConfig = require(path);

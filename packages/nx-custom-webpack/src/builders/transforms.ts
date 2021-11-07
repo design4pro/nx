@@ -12,14 +12,15 @@ export const customWebpackConfigTransformFactory: (
   context: BuilderContext
 ) => ExecutionTransformer<Configuration> = (
   options,
-  { workspaceRoot, target }
+  { workspaceRoot, target, logger }
 ) => (browserWebpackConfig) => {
   return CustomWebpackBuilder.buildWebpackConfig(
     normalize(workspaceRoot),
     options.customWebpackConfig,
     browserWebpackConfig,
     options,
-    target
+    target,
+    logger
   );
 };
 
