@@ -15,25 +15,29 @@ import {
   stylelintConfigIdiomaticOrderVersion,
   stylelintConfigPrettierVersion,
   stylelintConfigStandardVersion,
-  stylelintVersion
+  stylelintVersion,
 } from '../../utils/versions';
 import {
   stylelintConfigFile,
   stylelintVSCodeExtension,
   VSCodeExtensionsFilePath,
 } from '../../utils/constants';
-import {
-  recommendedRootStylelintConfiguration,
-} from '../../utils/config';
+import { recommendedRootStylelintConfiguration } from '../../utils/config';
 import { InitGeneratorSchema } from './schema';
 
 /** nx-stylelint:init generator */
-export default async function (host: Tree, options: InitGeneratorSchema): Promise<GeneratorCallback> {
+export default async function (
+  host: Tree,
+  options: InitGeneratorSchema
+): Promise<GeneratorCallback> {
   const rootConfigExists = host.exists(stylelintConfigFile);
   const installTask = checkDependenciesInstalled(host, rootConfigExists);
 
   if (!rootConfigExists) createRecommendedStylelintConfiguration(host);
-  else logger.info(`Stylelint root configuration found! Skipping creation of root ${stylelintConfigFile}!`);
+  else
+    logger.info(
+      `Stylelint root configuration found! Skipping creation of root ${stylelintConfigFile}!`
+    );
 
   addStylelintToWorkspaceConfiguration(host);
   updateExtensions(host);
@@ -49,7 +53,10 @@ function checkDependenciesInstalled(host: Tree, rootConfigExists: boolean) {
   packageJson.dependencies = packageJson.dependencies ?? {};
   packageJson.devDependencices = packageJson.devDependencices ?? {};
 
-  if (!packageJson.dependencies['stylelint'] && !packageJson.devDependencies['stylelint'])
+  if (
+    !packageJson.dependencies['stylelint'] &&
+    !packageJson.devDependencies['stylelint']
+  )
     devDependencies['stylelint'] = stylelintVersion;
 
   // When root configuration does not exists install packages for recommended stylelint configuration
@@ -58,19 +65,25 @@ function checkDependenciesInstalled(host: Tree, rootConfigExists: boolean) {
       !packageJson.dependencies['stylelint-config-idiomatic-order'] &&
       !packageJson.devDependencies['stylelint-config-idiomatic-order']
     )
-      devDependencies['stylelint-config-idiomatic-order'] = stylelintConfigIdiomaticOrderVersion;
+      devDependencies[
+        'stylelint-config-idiomatic-order'
+      ] = stylelintConfigIdiomaticOrderVersion;
 
     if (
       !packageJson.dependencies['stylelint-config-prettier'] &&
       !packageJson.devDependencies['stylelint-config-prettier']
     )
-      devDependencies['stylelint-config-prettier'] = stylelintConfigPrettierVersion;
+      devDependencies[
+        'stylelint-config-prettier'
+      ] = stylelintConfigPrettierVersion;
 
     if (
       !packageJson.dependencies['stylelint-config-standard'] &&
       !packageJson.devDependencies['stylelint-config-standard']
     )
-      devDependencies['stylelint-config-standard'] = stylelintConfigStandardVersion;
+      devDependencies[
+        'stylelint-config-standard'
+      ] = stylelintConfigStandardVersion;
   }
 
   return addDependenciesToPackageJson(host, {}, devDependencies);
@@ -82,7 +95,10 @@ function updateExtensions(host: Tree) {
   updateJson(host, VSCodeExtensionsFilePath, (json) => {
     json.recommendations = json.recommendations ?? [];
 
-    if (Array.isArray(json.recommendations) && !json.recommendations.includes(stylelintVSCodeExtension))
+    if (
+      Array.isArray(json.recommendations) &&
+      !json.recommendations.includes(stylelintVSCodeExtension)
+    )
       json.recommendations.push(stylelintVSCodeExtension);
 
     return json;
@@ -101,7 +117,8 @@ function addStylelintToWorkspaceConfiguration(host: Tree) {
     const taskRunner = workspace.tasksRunnerOptions?.default;
     taskRunner.options = taskRunner.options ?? {};
 
-    taskRunner.options.cacheableOperations = taskRunner.options.cacheableOperations ?? [];
+    taskRunner.options.cacheableOperations =
+      taskRunner.options.cacheableOperations ?? [];
 
     if (!taskRunner.options.cacheableOperations.includes('stylelint'))
       taskRunner.options.cacheableOperations.push('stylelint');
