@@ -54,7 +54,8 @@
             "cwd": "packages/nx-custom-webpack"
           }
         }
-      }
+      },
+      "tags": ["webpack"]
     },
     "nx-custom-webpack-e2e": {
       "projectType": "application",
@@ -70,7 +71,9 @@
             "jestConfig": "e2e/nx-custom-webpack-e2e/jest.config.js"
           }
         }
-      }
+      },
+      "tags": ["webpack"],
+      "implicitDependencies": ["nx-custom-webpack"]
     },
     "nx-linter": {
       "root": "packages/nx-linter",
@@ -130,7 +133,8 @@
             "cwd": "packages/nx-linter"
           }
         }
-      }
+      },
+      "tags": ["linter"]
     },
     "nx-linter-e2e": {
       "projectType": "application",
@@ -146,7 +150,8 @@
             "jestConfig": "e2e/nx-linter-e2e/jest.config.js"
           }
         }
-      }
+      },
+      "tags": [], "implicitDependencies": ["nx-linter"]
     },
     "nx-strapi": {
       "root": "packages/nx-strapi",
@@ -206,7 +211,8 @@
             "cwd": "packages/nx-strapi"
           }
         }
-      }
+      },
+      "tags": ["strapi"]
     },
     "nx-strapi-e2e": {
       "projectType": "application",
@@ -222,7 +228,8 @@
             "jestConfig": "e2e/nx-strapi-e2e/jest.config.js"
           }
         }
-      }
+      },
+      "tags": [], "implicitDependencies": ["nx-strapi"]
     }
   },
   "cli": {
