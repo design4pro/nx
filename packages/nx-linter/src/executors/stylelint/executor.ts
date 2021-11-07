@@ -12,7 +12,9 @@ export default async function runExecutor(
   process.chdir(context.cwd);
 
   const projectName = context.projectName || '<???>';
-  const projectRoot = context.projectName ? context.workspace.projects[projectName].root : context.root;
+  const projectRoot = context.projectName
+    ? context.workspace.projects[projectName].root
+    : context.root;
 
   if (!options.silent) logger.info(`\nLinting Styles "${projectName}"...`);
 
@@ -42,15 +44,19 @@ export default async function runExecutor(
     logger.info(result.output);
   }
 
-  if (totalWarnings > 0 && !options.silent) logger.warn('\nLint warnings found in the listed files.');
+  if (totalWarnings > 0 && !options.silent)
+    logger.warn('\nLint warnings found in the listed files.');
 
-  if (result.errored && !options.silent) logger.error('\nLint errors found in the listed files.');
+  if (result.errored && !options.silent)
+    logger.error('\nLint errors found in the listed files.');
 
-  if (totalWarnings === 0 && !result.errored && !options.silent) logger.info('\nAll files pass linting.');
+  if (totalWarnings === 0 && !result.errored && !options.silent)
+    logger.info('\nAll files pass linting.');
 
   return {
     success:
       options.force ||
-      (result.errored === false && (options.maxWarnings === -1 || totalWarnings <= options.maxWarnings)),
+      (result.errored === false &&
+        (options.maxWarnings === -1 || totalWarnings <= options.maxWarnings)),
   };
 }

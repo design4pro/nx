@@ -128,7 +128,10 @@ describe('nx-stylelint:lint executor', () => {
   });
 
   it('should not log if the silent flag was passed', async () => {
-    const { success } = await executor({ ...defaultOptions, silent: true }, mockContext);
+    const { success } = await executor(
+      { ...defaultOptions, silent: true },
+      mockContext
+    );
 
     expect(success).toBeTruthy();
     expect(logger.info).not.toHaveBeenCalled();
@@ -139,7 +142,10 @@ describe('nx-stylelint:lint executor', () => {
   it('should not log if the silent flag was passed and errors', async () => {
     mockResult = mockResultWithErrorsAndWarnings;
 
-    const { success } = await executor({ ...defaultOptions, silent: true }, mockContext);
+    const { success } = await executor(
+      { ...defaultOptions, silent: true },
+      mockContext
+    );
 
     expect(success).toBeFalsy();
     expect(logger.info).not.toHaveBeenCalled();
@@ -152,8 +158,12 @@ describe('nx-stylelint:lint executor', () => {
 
     expect(success).toBeTruthy();
     expect(logger.info).toHaveBeenCalledWith('\nLinting Styles "<???>"...');
-    expect(logger.error).not.toHaveBeenCalledWith('\nLint errors found in the listed files.');
-    expect(logger.warn).not.toHaveBeenCalledWith('\nLint warnings found in the listed files.');
+    expect(logger.error).not.toHaveBeenCalledWith(
+      '\nLint errors found in the listed files.'
+    );
+    expect(logger.warn).not.toHaveBeenCalledWith(
+      '\nLint warnings found in the listed files.'
+    );
     expect(logger.info).toHaveBeenCalledWith('\nAll files pass linting.');
   });
 
@@ -164,8 +174,12 @@ describe('nx-stylelint:lint executor', () => {
 
     expect(success).toBeTruthy();
     expect(logger.info).toHaveBeenCalledWith('\nLinting Styles "<???>"...');
-    expect(logger.error).not.toHaveBeenCalledWith('\nLint errors found in the listed files.');
-    expect(logger.warn).toHaveBeenCalledWith('\nLint warnings found in the listed files.');
+    expect(logger.error).not.toHaveBeenCalledWith(
+      '\nLint errors found in the listed files.'
+    );
+    expect(logger.warn).toHaveBeenCalledWith(
+      '\nLint warnings found in the listed files.'
+    );
     expect(logger.info).not.toHaveBeenCalledWith('\nAll files pass linting.');
   });
 
@@ -176,20 +190,31 @@ describe('nx-stylelint:lint executor', () => {
 
     expect(success).toBeFalsy();
     expect(logger.info).toHaveBeenCalledWith('\nLinting Styles "<???>"...');
-    expect(logger.error).toHaveBeenCalledWith('\nLint errors found in the listed files.');
-    expect(logger.warn).toHaveBeenCalledWith('\nLint warnings found in the listed files.');
+    expect(logger.error).toHaveBeenCalledWith(
+      '\nLint errors found in the listed files.'
+    );
+    expect(logger.warn).toHaveBeenCalledWith(
+      '\nLint warnings found in the listed files.'
+    );
     expect(logger.info).not.toHaveBeenCalledWith('\nAll files pass linting.');
   });
 
   it('should fail when maxWarnings exceeded', async () => {
     mockResult = mockResultWithWarnings;
 
-    const { success } = await executor({ ...defaultOptions, maxWarnings: 2 }, mockContext);
+    const { success } = await executor(
+      { ...defaultOptions, maxWarnings: 2 },
+      mockContext
+    );
 
     expect(success).toBeFalsy();
     expect(logger.info).toHaveBeenCalledWith('\nLinting Styles "<???>"...');
-    expect(logger.error).not.toHaveBeenCalledWith('\nLint errors found in the listed files.');
-    expect(logger.warn).toHaveBeenCalledWith('\nLint warnings found in the listed files.');
+    expect(logger.error).not.toHaveBeenCalledWith(
+      '\nLint errors found in the listed files.'
+    );
+    expect(logger.warn).toHaveBeenCalledWith(
+      '\nLint warnings found in the listed files.'
+    );
     expect(logger.info).not.toHaveBeenCalledWith('\nAll files pass linting.');
   });
 
@@ -200,8 +225,12 @@ describe('nx-stylelint:lint executor', () => {
 
     expect(success).toBeFalsy();
     expect(logger.info).toHaveBeenCalledWith('\nLinting Styles "<???>"...');
-    expect(logger.error).toHaveBeenCalledWith('\nLint errors found in the listed files.');
-    expect(logger.warn).not.toHaveBeenCalledWith('\nLint warnings found in the listed files.');
+    expect(logger.error).toHaveBeenCalledWith(
+      '\nLint errors found in the listed files.'
+    );
+    expect(logger.warn).not.toHaveBeenCalledWith(
+      '\nLint warnings found in the listed files.'
+    );
     expect(logger.info).not.toHaveBeenCalledWith('\nAll files pass linting.');
   });
 
@@ -218,7 +247,9 @@ describe('nx-stylelint:lint executor', () => {
     );
 
     expect(success).toBeFalsy();
-    expect(logger.error).toHaveBeenCalledWith('\nLint errors found in the listed files.');
+    expect(logger.error).toHaveBeenCalledWith(
+      '\nLint errors found in the listed files.'
+    );
     expect(spy).toHaveBeenCalledWith(normalize('/root/output.json'), 'Output');
   });
 
