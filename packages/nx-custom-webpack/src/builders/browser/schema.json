@@ -22,6 +22,10 @@
         }
       },
       "default": false
+    },
+    "indexTransform": {
+      "type": "string",
+      "description": "Path to the file with index.html transform function"
     }
   },
   "required": []

@@ -1,11 +1,22 @@
-/**
- * check for TS node registration
- * @param file: file name or file directory are allowed
- * @todo tsNodeRegistration: require ts-node if file extension is TypeScript
- */
-export function tsNodeRegister(file = '', tsConfig?: string) {
-  if (file && file.endsWith('.ts')) {
-    // Register TS compiler lazily
+import { logging } from '@angular-devkit/core';
+
+const _tsNodeRegister = (() => {
+  let lastTsConfig: string | undefined;
+  return (tsConfig: string, logger: logging.LoggerApi) => {
+    // Check if the function was previously called with the same tsconfig
+    if (lastTsConfig && lastTsConfig !== tsConfig) {
+      logger.warn(`Trying to register ts-node again with a different tsconfig - skipping the registration.
+                   tsconfig 1: ${lastTsConfig}
+                   tsconfig 2: ${tsConfig}`);
+    }
+
+    if (lastTsConfig) {
+      return;
+    }
+
+    lastTsConfig = tsConfig;
+
+    // Register ts-node
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     require('ts-node').register({
       project: tsConfig,
@@ -26,5 +37,21 @@ export function tsNodeRegister(file = '', tsConfig?: string) {
     if (baseUrl && paths) {
       tsconfigPaths.register({ baseUrl, paths });
     }
+  };
+})();
+
+/**
+ * check for TS node registration
+ * @param file: file name or file directory are allowed
+ * @todo tsNodeRegistration: require ts-node if file extension is TypeScript
+ */
+export function tsNodeRegister(
+  file = '',
+  tsConfig: string,
+  logger: logging.LoggerApi
+) {
+  if (file && file.endsWith('.ts')) {
+    // Register TS compiler lazily
+    _tsNodeRegister(tsConfig, logger);
   }
 }

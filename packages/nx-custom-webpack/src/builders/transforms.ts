@@ -1,24 +1,48 @@
 import { BuilderContext } from '@angular-devkit/architect';
 import { ExecutionTransformer } from '@angular-devkit/build-angular';
-import { normalize } from '@angular-devkit/core';
+import { IndexHtmlTransform } from '@angular-devkit/build-angular/src/utils/index-file/index-html-generator';
+import { getSystemPath, normalize } from '@angular-devkit/core';
 import { Configuration } from 'webpack';
 import { CustomWebpackBuilder } from './custom-webpack-builder';
 import { CustomWebpackSchema } from './custom-webpack-schema';
+import { tsNodeRegister } from './utils';
 
 export const customWebpackConfigTransformFactory: (
   options: CustomWebpackSchema,
   context: BuilderContext
 ) => ExecutionTransformer<Configuration> = (
   options,
-  { workspaceRoot, target }
+  { workspaceRoot, target, logger }
 ) => (browserWebpackConfig) => {
   return CustomWebpackBuilder.buildWebpackConfig(
     normalize(workspaceRoot),
     options.customWebpackConfig,
     browserWebpackConfig,
     options,
-    target
+    target,
+    logger
   );
+};
+
+export const indexHtmlTransformFactory: (
+  options: CustomWebpackSchema,
+  context: BuilderContext
+) => IndexHtmlTransform = (
+  { indexTransform, tsConfig },
+  { workspaceRoot, target, logger }
+) => {
+  if (!indexTransform) return null;
+  tsNodeRegister(
+    indexTransform,
+    `${getSystemPath(normalize(workspaceRoot))}/${tsConfig}`,
+    logger
+  );
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const indexModule = require(`${getSystemPath(
+    normalize(workspaceRoot)
+  )}/${indexTransform}`);
+  const transform = indexModule.default || indexModule;
+  return async (indexHtml: string) => transform(target, indexHtml);
 };
 
 export const getTransforms = (
@@ -26,4 +50,5 @@ export const getTransforms = (
   context: BuilderContext
 ) => ({
   webpackConfiguration: customWebpackConfigTransformFactory(options, context),
+  indexHtml: indexHtmlTransformFactory(options, context),
 });
