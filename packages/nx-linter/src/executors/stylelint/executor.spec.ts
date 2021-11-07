@@ -86,6 +86,7 @@ describe('nx-stylelint:lint executor', () => {
     workspace: {
       version: 2,
       projects: {},
+      npmScope: ''
     },
     isVerbose: false,
   };
