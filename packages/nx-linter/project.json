@@ -1,0 +1,61 @@
+{
+  "root": "packages/nx-linter",
+  "sourceRoot": "packages/nx-linter/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/nx-linter/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/nx-linter"],
+      "options": {
+        "jestConfig": "packages/nx-linter/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/nx-linter",
+        "tsConfig": "packages/nx-linter/tsconfig.lib.json",
+        "packageJson": "packages/nx-linter/package.json",
+        "main": "packages/nx-linter/src/index.ts",
+        "assets": [
+          "packages/nx-linter/*.md",
+          {
+            "input": "./packages/nx-linter/src",
+            "glob": "**/*.!(ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/nx-linter",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/nx-linter",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "release": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "npx semantic-release"
+          }
+        ],
+        "cwd": "packages/nx-linter"
+      }
+    }
+  },
+  "tags": ["linter"]
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "NxVscodeExtension",
+  "title": "Create a VSCode Extension",
+  "examples": [
+    {
+      "command": "g lib mylib --directory=myapp",
+      "description": "Generate libs/myapp/mylib"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the extension",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What's the name of your extension?"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The identifier (display name) of the extension",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "What's the identifier (display name) of your extension?",
+      "pattern": "^[a-zA-Z].*$"
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the extension",
+      "x-prompt": "What's the description of your extension?"
+    },
+    "tags": {
+      "type": "string",
+      "description": "Add tags to the project (used for linting)",
+      "alias": "t"
+    },
+    "directory": {
+      "type": "string",
+      "description": "A directory where the project is placed",
+      "alias": "d"
+    },
+    "skipFormat": {
+      "description": "Skip formatting files",
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": ["name", "displayName"]
+}

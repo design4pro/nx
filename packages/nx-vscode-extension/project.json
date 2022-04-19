@@ -1,0 +1,65 @@
+{
+  "root": "packages/nx-vscode-extension",
+  "sourceRoot": "packages/nx-vscode-extension/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/nx-vscode-extension",
+        "main": "packages/nx-vscode-extension/src/index.ts",
+        "tsConfig": "packages/nx-vscode-extension/tsconfig.lib.json",
+        "assets": [
+          "packages/nx-vscode-extension/*.md",
+          {
+            "input": "./packages/nx-vscode-extension/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/nx-vscode-extension/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/nx-vscode-extension",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/nx-vscode-extension",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/nx-vscode-extension/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/nx-vscode-extension"],
+      "options": {
+        "jestConfig": "packages/nx-vscode-extension/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "release": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "npx semantic-release"
+          }
+        ],
+        "cwd": "packages/nx-vscode-extension"
+      }
+    }
+  },
+  "tags": ["vscode"]
+}

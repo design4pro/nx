@@ -1,0 +1,39 @@
+{
+  "name": "@design4pro/nx-vscode-extension",
+  "description": "Visual Studio Code Extension Plugin for Nx",
+  "version": "0.0.1",
+  "license": "MIT",
+  "keywords": [
+    "nx",
+    "plugin",
+    "vscode",
+    "extension"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/design4pro/nx.git"
+  },
+  "author": {
+    "name": "Rafał Wolak",
+    "email": "r.wolak@design4.pro",
+    "url": "https://www.design4.pro"
+  },
+  "bugs": {
+    "url": "https://github.com/design4pro/nx/issues/"
+  },
+  "homepage": "https://github.com/design4pro/nx#readme",
+  "main": "src/index.js",
+  "generators": "./generators.json",
+  "executors": "./executors.json",
+  "peerDependencies": {
+    "@nrwl/workspace": "*",
+    "@angular-devkit/schematics": "^13.3.3"
+  },
+  "devDependencies": {
+    "request-light": "^0.5.8",
+    "chalk": "^5.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
