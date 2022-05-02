@@ -31,7 +31,7 @@ export function updateDependencies(tree: Tree, engine: string) {
   );
 }
 
-export async function init(tree: Tree, options: InitGeneratorSchema) {
+export async function initGenerator(tree: Tree, options: InitGeneratorSchema) {
   const tasks: GeneratorCallback[] = [];
   const vsCodeEngine = await getLatestVSCodeVersion();
 
@@ -50,4 +50,4 @@ export async function init(tree: Tree, options: InitGeneratorSchema) {
   return runTasksInSerial(...tasks);
 }
 
-export default init;
+export default initGenerator;

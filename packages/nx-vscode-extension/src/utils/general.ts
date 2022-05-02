@@ -14,7 +14,5 @@ export function getDefaultTemplateOptions(tree: Tree) {
     stringUtils: stringUtils,
     npmScope: npmScope || 'workspace',
     packageManager: cli?.packageManager || detectPackageManager(),
-    displayName: '',
-    description: '',
   };
 }

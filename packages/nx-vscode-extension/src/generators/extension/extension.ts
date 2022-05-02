@@ -3,12 +3,12 @@ import {
   formatFiles,
   generateFiles,
   GeneratorCallback,
-  getWorkspaceLayout,
   names,
   offsetFromRoot,
   Tree,
 } from '@nrwl/devkit';
 import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
+import { getRelativePathToRootTsConfig } from '@nrwl/workspace/src/utilities/typescript';
 import * as path from 'path';
 import { getLatestVSCodeVersion } from '../../utils/env';
 import { getDefaultTemplateOptions } from '../../utils/general';
@@ -19,31 +19,12 @@ import {
   typesMochaVersion,
   vsCodeTestElectronVersion,
 } from '../../utils/versions';
-import init from '../init/init';
-import { NormalizedSchema, Schema } from './schema';
-
-function normalizeOptions(tree: Tree, options: Schema): NormalizedSchema {
-  const name = names(options.name).fileName;
-  const projectDirectory = options.directory
-    ? `${names(options.directory).fileName}/${name}`
-    : name;
-  const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
-  const projectRoot = `${getWorkspaceLayout(tree).libsDir}/${projectDirectory}`;
-  const parsedTags = options.tags
-    ? options.tags.split(',').map((s) => s.trim())
-    : [];
-
-  return {
-    ...options,
-    projectName,
-    projectRoot,
-    projectDirectory,
-    parsedTags,
-  };
-}
+import { initGenerator } from '../init/init';
+import { NormalizedSchema, normalizeOptions } from './lib/normalize-options';
+import { Schema } from './schema';
 
 function addProject(tree: Tree, options: NormalizedSchema) {
-  addProjectConfiguration(tree, options.projectName, {
+  addProjectConfiguration(tree, options.name, {
     root: options.projectRoot,
     projectType: 'library',
     sourceRoot: `${options.projectRoot}/src`,
@@ -62,6 +43,7 @@ async function addFiles(tree: Tree, options: NormalizedSchema) {
     ...options,
     ...names(options.name),
     offsetFromRoot: offsetFromRoot(options.projectRoot),
+    rootTsConfigPath: getRelativePathToRootTsConfig(tree, options.projectRoot),
     vsCodeEngine: await getLatestVSCodeVersion(),
     globVersion,
     mochaVersion,
@@ -78,25 +60,23 @@ async function addFiles(tree: Tree, options: NormalizedSchema) {
   );
 }
 
-export async function generator(tree: Tree, options: Schema) {
+export async function extensionGenerator(tree: Tree, options: Schema): Promise<GeneratorCallback> {
   const normalizedOptions = normalizeOptions(tree, options);
 
   await addFiles(tree, normalizedOptions);
 
   addProject(tree, normalizedOptions);
 
-  const tasks: GeneratorCallback[] = [
-    await init(tree, {
-      ...options,
-      skipFormat: true,
-    }),
-  ];
+  const initTask = await initGenerator(tree, {
+    ...options,
+    skipFormat: true,
+  });
 
   if (!options.skipFormat) {
     await formatFiles(tree);
   }
 
-  return runTasksInSerial(...tasks);
+  return runTasksInSerial(initTask);
 }
 
-export default generator;
+export default extensionGenerator;

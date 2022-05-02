@@ -1,6 +1,6 @@
 import { readProjectConfiguration, Tree } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-import generator from './generator';
+import extensionGenerator from './extension';
 import { Schema } from './schema';
 
 describe('nx-vscode-extension generator', () => {
@@ -15,8 +15,10 @@ describe('nx-vscode-extension generator', () => {
   });
 
   it('should run successfully', async () => {
-    await generator(appTree, options);
+    await extensionGenerator(appTree, options);
+
     const config = readProjectConfiguration(appTree, 'test');
+
     expect(config).toBeDefined();
   });
 });

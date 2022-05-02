@@ -8,7 +8,7 @@ import {
   typesMochaVersion,
   vsCodeTestElectronVersion,
 } from '../../utils/versions';
-import { init } from './init';
+import { initGenerator } from './init';
 import { InitGeneratorSchema } from './schema';
 
 describe('init', () => {
@@ -22,7 +22,7 @@ describe('init', () => {
     const initOptions: InitGeneratorSchema = { skipFormat: false };
     const vsCodeEngine = await getLatestVSCodeVersion();
 
-    await init(tree, initOptions);
+    await initGenerator(tree, initOptions);
     const packageJson = readJson(tree, '/package.json');
 
     expect(packageJson.devDependencies).toEqual(

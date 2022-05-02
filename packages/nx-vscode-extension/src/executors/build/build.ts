@@ -4,7 +4,7 @@ import { getProjectConfiguration } from '../../utils/get-project-configuration';
 import { printCommand } from '../../utils/print-command';
 import { BuildExecutorSchema } from './schema';
 
-export async function runExecutor(
+export async function buildExecutor(
   options: BuildExecutorSchema,
   context: ExecutorContext
 ) {
@@ -25,4 +25,4 @@ export async function runExecutor(
   );
 }
 
-export default runExecutor;
+export default buildExecutor;
