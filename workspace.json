@@ -13,5 +13,6 @@
     "nx-strapi-e2e": "e2e/nx-strapi-e2e",
     "nx-vscode-extension": "packages/nx-vscode-extension",
     "nx-vscode-extension-e2e": "e2e/nx-vscode-extension-e2e"
-  }
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

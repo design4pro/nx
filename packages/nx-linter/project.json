@@ -1,5 +1,6 @@
 {
-  "root": "packages/nx-linter",
+  "name": "nx-linter",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/nx-linter/src",
   "projectType": "library",
   "targets": {
@@ -11,7 +12,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/nx-linter"],
+      "outputs": ["{workspaceRoot}/coverage/packages/nx-linter"],
       "options": {
         "jestConfig": "packages/nx-linter/jest.config.ts",
         "passWithNoTests": true
@@ -46,7 +47,7 @@
       }
     },
     "release": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": [
           {

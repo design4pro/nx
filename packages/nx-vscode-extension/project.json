@@ -1,5 +1,6 @@
 {
-  "root": "packages/nx-vscode-extension",
+  "name": "nx-vscode-extension",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/nx-vscode-extension/src",
   "targets": {
     "build": {
@@ -43,14 +44,14 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/nx-vscode-extension"],
+      "outputs": ["{workspaceRoot}/coverage/packages/nx-vscode-extension"],
       "options": {
         "jestConfig": "packages/nx-vscode-extension/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "release": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": [
           {

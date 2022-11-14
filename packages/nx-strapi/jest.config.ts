@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'nx-strapi',
 
   globals: {
@@ -11,5 +12,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/packages/nx-strapi',
-  preset: '../../jest.preset.ts',
+  preset: '../../jest.preset.js',
 };

@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'nx-release',
 
   globals: {
@@ -11,5 +12,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/packages/nx-release',
-  preset: '../../jest.preset.ts',
+  preset: '../../jest.preset.js',
 };

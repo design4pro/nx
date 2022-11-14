@@ -1,5 +1,5 @@
 import { logger, readJson, readProjectConfiguration, Tree } from '@nrwl/devkit';
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
 import { libraryGenerator } from '@nrwl/node';
 import { Configuration as StylelintConfiguration } from 'stylelint';
 import generator from './generator';
@@ -18,7 +18,7 @@ describe('nx-linter:configuration generator', () => {
   });
 
   beforeEach(async () => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyV1Workspace();
   });
 
   it('should add stylelint target, run init generator and create project .stylelinrrc.json', async () => {

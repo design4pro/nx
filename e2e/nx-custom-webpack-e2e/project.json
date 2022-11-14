@@ -1,6 +1,7 @@
 {
+  "name": "nx-custom-webpack-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "root": "e2e/nx-custom-webpack-e2e",
   "sourceRoot": "e2e/nx-custom-webpack-e2e/src",
   "targets": {
     "e2e": {

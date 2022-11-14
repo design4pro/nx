@@ -1,5 +1,6 @@
 {
-  "root": "packages/nx-release",
+  "name": "nx-release",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/nx-release/src",
   "targets": {
     "build": {
@@ -43,14 +44,14 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/nx-release"],
+      "outputs": ["{workspaceRoot}/coverage/packages/nx-release"],
       "options": {
         "jestConfig": "packages/nx-release/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "release": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": [
           {
