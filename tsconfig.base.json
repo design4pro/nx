@@ -16,6 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@design4pro/nx-linter": ["packages/nx-linter/src/index.ts"],
+      "@design4pro/nx-release": ["packages/nx-release/src/index.ts"],
+      "@design4pro/nx-shopify": ["packages/nx-shopify/src/index.ts"],
       "@design4pro/nx-strapi": ["packages/nx-strapi/src/index.ts"],
       "@design4pro/nx-vscode-extension": [
         "packages/nx-vscode-extension/src/index.ts"
