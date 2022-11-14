@@ -13,7 +13,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/nx-custom-webpack"],
       "options": {
-        "jestConfig": "packages/nx-custom-webpack/jest.config.js",
+        "jestConfig": "packages/nx-custom-webpack/jest.config.ts",
         "passWithNoTests": true
       }
     },
