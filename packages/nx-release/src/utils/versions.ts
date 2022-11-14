@@ -1,0 +1,1 @@
+export const semanticReleaseVersion = '^2.1.3';
