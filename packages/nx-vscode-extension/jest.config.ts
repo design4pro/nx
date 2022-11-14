@@ -1,6 +1,6 @@
 module.exports = {
   displayName: 'nx-vscode-extension',
-  preset: '../../jest.preset.js',
+
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -11,4 +11,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/packages/nx-vscode-extension',
+  preset: '../../jest.preset.ts',
 };

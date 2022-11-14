@@ -45,7 +45,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/nx-vscode-extension"],
       "options": {
-        "jestConfig": "packages/nx-vscode-extension/jest.config.js",
+        "jestConfig": "packages/nx-vscode-extension/jest.config.ts",
         "passWithNoTests": true
       }
     },
