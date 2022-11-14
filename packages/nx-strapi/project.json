@@ -13,7 +13,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/nx-strapi"],
       "options": {
-        "jestConfig": "packages/nx-strapi/jest.config.js",
+        "jestConfig": "packages/nx-strapi/jest.config.ts",
         "passWithNoTests": true
       }
     },

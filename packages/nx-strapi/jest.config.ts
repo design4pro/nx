@@ -1,6 +1,6 @@
 module.exports = {
   displayName: 'nx-strapi',
-  preset: '../../jest.preset.js',
+
   globals: {
     'ts-jest': {
       tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -11,4 +11,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/packages/nx-strapi',
+  preset: '../../jest.preset.ts',
 };
