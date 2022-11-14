@@ -13,7 +13,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/nx-linter"],
       "options": {
-        "jestConfig": "packages/nx-linter/jest.config.js",
+        "jestConfig": "packages/nx-linter/jest.config.ts",
         "passWithNoTests": true
       }
     },
