@@ -1,7 +1,6 @@
 /* eslint-disable */
 export default {
   displayName: 'nx-vscode-extension',
-
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',

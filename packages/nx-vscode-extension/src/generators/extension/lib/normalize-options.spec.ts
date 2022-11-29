@@ -1,23 +1,35 @@
 import { Tree } from '@nrwl/devkit';
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { Linter } from '@nrwl/linter';
+import { libraryGenerator } from '@nrwl/workspace';
 import { Schema } from '../schema';
 import { normalizeOptions } from './normalize-options';
 
 describe('Normalize Options', () => {
   let appTree: Tree;
 
+  const defaultOptions = {
+    buildable: true,
+    compiler: 'tsc',
+  };
+
   beforeEach(() => {
-    appTree = createTreeWithEmptyV1Workspace();
+    appTree = createTreeWithEmptyWorkspace();
   });
 
-  it('should normalize options with name in kebab case', () => {
+  it('Should normalize options with name in kebab case', async () => {
     const schema: Schema = {
       displayName: 'my-extension',
       linter: Linter.EsLint,
     };
 
+    await libraryGenerator(appTree, {
+      ...defaultOptions,
+      ...{ name: schema.displayName },
+    });
+
     const options = normalizeOptions(appTree, schema);
+
     expect(options).toEqual({
       description: 'my-extension extension',
       name: 'my-extension',
@@ -30,10 +42,16 @@ describe('Normalize Options', () => {
     });
   });
 
-  it('should normalize options with name in camel case', () => {
+  it('Should normalize options with name in camel case', async () => {
     const schema: Schema = {
       displayName: 'myExtension',
     };
+
+    await libraryGenerator(appTree, {
+      ...defaultOptions,
+      ...{ name: schema.displayName },
+    });
+
     const options = normalizeOptions(appTree, schema);
 
     expect(options).toEqual({
@@ -48,11 +66,17 @@ describe('Normalize Options', () => {
     });
   });
 
-  it('should normalize options with directory', () => {
+  it('Should normalize options with directory', async () => {
     const schema: Schema = {
       displayName: 'my-extension',
       directory: 'directory',
     };
+
+    await libraryGenerator(appTree, {
+      ...defaultOptions,
+      ...{ name: schema.displayName },
+    });
+
     const options = normalizeOptions(appTree, schema);
 
     expect(options).toEqual({
@@ -68,10 +92,16 @@ describe('Normalize Options', () => {
     });
   });
 
-  it('should normalize options that has directory in its name', () => {
+  it('Should normalize options that has directory in its name', async () => {
     const schema: Schema = {
       displayName: 'directory/my-extension',
     };
+
+    await libraryGenerator(appTree, {
+      ...defaultOptions,
+      ...{ name: schema.displayName },
+    });
+
     const options = normalizeOptions(appTree, schema);
 
     expect(options).toEqual({
@@ -86,10 +116,16 @@ describe('Normalize Options', () => {
     });
   });
 
-  it('should normalize options with display name', () => {
+  it('Should normalize options with display name', async () => {
     const schema: Schema = {
       displayName: 'my-extension',
     };
+
+    await libraryGenerator(appTree, {
+      ...defaultOptions,
+      ...{ name: schema.displayName },
+    });
+
     const options = normalizeOptions(appTree, schema);
 
     expect(options).toEqual({

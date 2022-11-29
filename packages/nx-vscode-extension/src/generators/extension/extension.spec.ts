@@ -1,23 +1,24 @@
 import { readProjectConfiguration, Tree } from '@nrwl/devkit';
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import extensionGenerator from './extension';
 import { Schema } from './schema';
 
 describe('nx-vscode-extension generator', () => {
   let appTree: Tree;
+
   const options: Schema = {
     name: 'test',
     displayName: 'test',
   };
 
   beforeEach(() => {
-    appTree = createTreeWithEmptyV1Workspace();
+    appTree = createTreeWithEmptyWorkspace();
   });
 
-  it('should run successfully', async () => {
+  it('Should run successfully', async () => {
     await extensionGenerator(appTree, options);
 
-    const config = readProjectConfiguration(appTree, 'test');
+    const config = readProjectConfiguration(appTree, options.name);
 
     expect(config).toBeDefined();
   });
