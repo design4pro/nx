@@ -1,1 +1,1 @@
-export const semanticReleaseVersion = '^2.1.3';
+export const semanticReleaseVersion = '^19.0.5';

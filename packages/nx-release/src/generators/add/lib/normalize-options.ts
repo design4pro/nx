@@ -3,18 +3,17 @@ import {
   readProjectConfiguration,
   Tree,
 } from '@nrwl/devkit';
-import { Schema } from '../schema';
+import { AddSchema } from '../schema';
 
-export interface NormalizedSchema extends Schema {
+export interface NormalizedSchema extends AddSchema {
   projectRoot: string;
   projectDist: string;
-  changelogFile: string;
   releaseTargetExists: boolean;
 }
 
 export function normalizeOptions(
   tree: Tree,
-  options: Schema
+  options: AddSchema
 ): NormalizedSchema {
   const projectConfig = readProjectConfiguration(tree, options.project);
   const { build } = projectConfig.targets;
@@ -29,9 +28,11 @@ export function normalizeOptions(
     return {
       ...options,
       projectRoot: projectConfig.root,
-      projectDist: build.options.outputPath || `dist/${libsDir}/${options.project}`,
+      projectDist:
+        build.options.outputPath || `dist/${libsDir}/${options.project}`,
+      changelog: options.changelog ?? true,
       changelogFile: options.changelogFile || `CHANGELOG.md`,
-      releaseTargetExists: projectConfig.targets.release != null
+      releaseTargetExists: projectConfig.targets.release != null,
     };
   }
 }

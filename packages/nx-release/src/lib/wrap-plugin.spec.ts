@@ -15,13 +15,13 @@ describe('wrapPlugin', () => {
     mockedGetPathCommitHashes.mockReset();
   });
 
-  it('can wrap plugin function', () => {
+  it('Can wrap plugin function', () => {
     const wrapped = wrapPlugin(jest.fn());
     expect(wrapped).toBeTruthy();
     expect(typeof wrapped).toBe('function');
   });
 
-  it('can filter commits', async () => {
+  it('Can filter commits', async () => {
     const plugin = jest.fn();
     plugin.mockReturnValue('result');
     jest.mock('./utils/git');

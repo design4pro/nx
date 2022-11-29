@@ -32,7 +32,7 @@ jest.mock('fs', () => ({
 }));
 
 describe('getProjectChangePaths', () => {
-  it('can get paths', async () => {
+  it('Can get paths', async () => {
     const paths = await getProjectChangePaths('test');
 
     expect(paths.length).toBe(2);

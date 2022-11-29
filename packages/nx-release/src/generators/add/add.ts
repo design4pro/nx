@@ -14,7 +14,7 @@ import * as path from 'path';
 import { getTemplateOptions } from '../../utils/get-template-options';
 import initGenerator from '../init/init';
 import { NormalizedSchema, normalizeOptions } from './lib/normalize-options';
-import { Schema } from './schema';
+import { AddSchema } from './schema';
 
 function addReleaseTarget(tree: Tree, options: NormalizedSchema) {
   const projectConfig = readProjectConfiguration(tree, options.project);
@@ -51,7 +51,7 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
   );
 }
 
-export async function addGenerator(tree: Tree, options: Schema) {
+export async function addGenerator(tree: Tree, options: AddSchema) {
   const normalizedOptions = normalizeOptions(tree, options);
 
   if (normalizedOptions.releaseTargetExists)
