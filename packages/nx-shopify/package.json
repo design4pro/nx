@@ -1,0 +1,37 @@
+{
+  "name": "@design4pro/nx-shopify",
+  "version": "0.0.0",
+  "description": "Generate Shopify Theme with `nx g @design4pro/nx-shopify:theme my-theme-name`",
+  "license": "MIT",
+  "keywords": [
+    "nx",
+    "plugin",
+    "strapi"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/design4pro/nx.git"
+  },
+  "author": {
+    "name": "Rafał Wolak",
+    "email": "r.wolak@design4.pro",
+    "url": "https://www.design4.pro"
+  },
+  "bugs": {
+    "url": "https://github.com/design4pro/nx/issues/"
+  },
+  "homepage": "https://github.com/design4pro/nx#readme",
+  "main": "src/index.js",
+  "generators": "./generators.json",
+  "executors": "./executors.json",
+  "peerDependencies": {
+    "@nrwl/workspace": "*"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "rxjs-for-await": "^1.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

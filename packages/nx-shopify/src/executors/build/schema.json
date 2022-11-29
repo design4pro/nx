@@ -1,0 +1,173 @@
+{
+  "version": 2,
+  "outputCapture": "direct-nodejs",
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "title": "Shopify Theme Build Target",
+  "description": "Shopify theme build target options",
+  "type": "object",
+  "properties": {
+    "outputPath": {
+      "type": "string",
+      "description": "The output path of the generated files"
+    },
+    "main": {
+      "type": "string",
+      "description": "The main application file path"
+    },
+    "tsConfig": {
+      "type": "string",
+      "description": "The path to the Typescript configuration file"
+    },
+    "themekitConfig": {
+      "type": "string",
+      "description": "The path to the themekit config.yml configuration file"
+    },
+    "postcssConfig": {
+      "type": "string",
+      "description": "The path to the PostCSS configuration file"
+    },
+    "watch": {
+      "type": "boolean",
+      "description": "Run build when files change",
+      "default": false
+    },
+    "poll": {
+      "type": "number",
+      "description": "Frequency of file watcher in ms"
+    },
+    "vendorChunk": {
+      "type": "boolean",
+      "description": "Use a separate bundle containing only vendor libraries.",
+      "default": true
+    },
+    "commonChunk": {
+      "type": "boolean",
+      "description": "Use a separate bundle containing code used across multiple bundles.",
+      "default": true
+    },
+    "runtimeChunk": {
+      "type": "boolean",
+      "description": "Use a separate bundle containing the runtime.",
+      "default": true
+    },
+    "sourceMap": {
+      "type": "boolean",
+      "description": "Produce source maps",
+      "default": true
+    },
+    "outputHashing": {
+      "type": "string",
+      "description": "Define the output filename cache-busting hashing mode.",
+      "default": "none",
+      "enum": ["none", "all", "media", "bundles"]
+    },
+    "progress": {
+      "type": "boolean",
+      "description": "Log progress to the console while building",
+      "default": false
+    },
+    "assets": {
+      "type": "array",
+      "description": "List of static theme assets",
+      "default": [],
+      "items": {
+        "$ref": "#/definitions/assetPattern"
+      }
+    },
+    "analyze": {
+      "type": "boolean",
+      "description": "Analyze the generated bundle and open webpack-bundle-analyzer in the browser",
+      "default": false
+    },
+    "statsJson": {
+      "type": "boolean",
+      "description": "Generates a 'stats.json' file which can be analyzed using tools such as: #webpack-bundle-analyzer' or https://webpack.github.io/analyse",
+      "default": false
+    },
+    "verbose": {
+      "type": "boolean",
+      "description": "Emits verbose output",
+      "default": false
+    },
+    "extractLicenses": {
+      "type": "boolean",
+      "description": "Extract all licenses in a separate file, in the case of production builds only.",
+      "default": false
+    },
+    "optimization": {
+      "type": "boolean",
+      "description": "Defines the optimization level of the build.",
+      "default": false
+    },
+    "showCircularDependencies": {
+      "type": "boolean",
+      "description": "Show circular dependency warnings on builds.",
+      "default": true
+    },
+    "memoryLimit": {
+      "type": "number",
+      "description": "Memory limit for type checking service process in MB.",
+      "default": 2048
+    },
+    "fileReplacements": {
+      "description": "Replace files with other files in the build.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "replace": {
+            "type": "string"
+          },
+          "with": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": ["replace", "with"]
+      },
+      "default": []
+    },
+    "webpackConfig": {
+      "type": "string",
+      "description": "Path to a function which takes a webpack config, context and returns the resulting webpack config"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["tsConfig", "outputPath"],
+  "definitions": {
+    "assetPattern": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "glob": {
+              "type": "string",
+              "description": "The pattern to match."
+            },
+            "input": {
+              "type": "string",
+              "description": "The input directory path in which to apply 'glob'. Defaults to the project root."
+            },
+            "ignore": {
+              "description": "An array of globs to ignore.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "output": {
+              "type": "string",
+              "description": "Absolute path within the output."
+            }
+          },
+          "additionalProperties": false,
+          "required": ["glob", "input", "output"]
+        },
+        {
+          "type": "string"
+        }
+      ]
+    }
+  }
+}

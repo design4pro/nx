@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "nx-shopify",
+  "version": "0.0.1",
+  "generators": {
+    "nx-shopify": {
+      "factory": "./src/generators/nx-shopify/generator",
+      "schema": "./src/generators/nx-shopify/schema.json",
+      "description": "nx-shopify generator"
+    }
+  }
+}
