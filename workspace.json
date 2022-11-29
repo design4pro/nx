@@ -7,8 +7,6 @@
     "nx-linter-e2e": "e2e/nx-linter-e2e",
     "nx-release": "packages/nx-release",
     "nx-release-e2e": "e2e/nx-release-e2e",
-    "nx-shopify": "packages/nx-shopify",
-    "nx-shopify-e2e": "e2e/nx-shopify-e2e",
     "nx-strapi": "packages/nx-strapi",
     "nx-strapi-e2e": "e2e/nx-strapi-e2e",
     "nx-vscode-extension": "packages/nx-vscode-extension",

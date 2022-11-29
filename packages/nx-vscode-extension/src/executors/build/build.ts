@@ -20,6 +20,7 @@ export async function buildExecutor(
       outputPath,
       color: true,
       cwd: getProjectConfiguration(context).root,
+      __unparsed__: undefined,
     },
     context
   );
