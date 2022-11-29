@@ -1,6 +1,7 @@
-module.exports = {
-  displayName: 'nx-linter',
-  preset: '../../jest.preset.js',
+/* eslint-disable */
+export default {
+  displayName: 'nx-strapi',
+
   globals: {
     'ts-jest': {
       tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -10,5 +11,6 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/packages/nx-linter',
+  coverageDirectory: '../../coverage/packages/nx-strapi',
+  preset: '../../jest.preset.js',
 };

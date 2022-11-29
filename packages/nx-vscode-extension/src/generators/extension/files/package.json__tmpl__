@@ -1,0 +1,40 @@
+{
+  "name": "<%= name %>",
+  "displayName": "<%= displayName %>",
+  "description": "<%= description %>",
+  "version": "0.0.0",
+  "engines": {
+    "vscode": "<%= vsCodeEngine %>"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:<%= name %>.helloWorld"
+  ],
+  "main": "./src/main.ts",
+  "contributes": {
+    "commands": [
+      {
+        "command": "<%= name %>.helloWorld",
+        "title": "Hello World"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "<%= packageManager %> run compile",
+    "compile": "tsc -p tsconfig.app.json",
+    "watch": "tsc -watch -p tsconfig.app.json",
+    "pretest": "<%= packageManager %> run compile && <%= packageManager %> run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node <%= offsetFromRoot %>dist/out-tsc/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "<%= vsCodeEngine %>",
+    "@types/glob": "<%= typesGlobVersion %>",
+    "@types/mocha": "<%= typesMochaVersion %>",
+    "@vscode/test-electron": "<%= vsCodeTestElectronVersion %>",
+    "glob": "<%= globVersion %>",
+    "mocha": "<%= mochaVersion %>"
+  }
+}

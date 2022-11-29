@@ -1,31 +1,37 @@
 import { logger, readJson, readProjectConfiguration, Tree } from '@nrwl/devkit';
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-import { libraryGenerator } from '@nrwl/node';
+import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { libraryGenerator } from '@nrwl/workspace';
 import { Configuration as StylelintConfiguration } from 'stylelint';
 import generator from './generator';
 import { ConfigurationGeneratorSchema } from './schema';
 
-const defaultOptions: ConfigurationGeneratorSchema = {
-  project: 'test',
-  skipFormat: false,
-};
-
 describe('nx-linter:configuration generator', () => {
   let tree: Tree;
+
+  const defaultOptions = {
+    buildable: true,
+    compiler: 'tsc',
+  };
+
+  const schema: ConfigurationGeneratorSchema = {
+    project: 'test',
+    skipFormat: false,
+  };
 
   beforeAll(async () => {
     logger.info = jest.fn();
   });
 
   beforeEach(async () => {
-    tree = createTreeWithEmptyWorkspace();
+    tree = createTreeWithEmptyV1Workspace();
   });
 
   it('should add stylelint target, run init generator and create project .stylelinrrc.json', async () => {
     const projectStylelint = `libs/test/.stylelintrc.json`;
 
-    await libraryGenerator(tree, { name: 'test' });
-    await generator(tree, defaultOptions);
+    await libraryGenerator(tree, { ...defaultOptions, name: schema.project });
+
+    await generator(tree, schema);
 
     const config = readProjectConfiguration(tree, 'test');
 
@@ -48,14 +54,15 @@ describe('nx-linter:configuration generator', () => {
   it('should fail when project already has a stylelint target', async () => {
     expect.assertions(2);
 
-    await libraryGenerator(tree, { name: 'test' });
-    await generator(tree, defaultOptions);
+    await libraryGenerator(tree, { ...defaultOptions, name: schema.project });
 
-    const config = readProjectConfiguration(tree, 'test');
+    await generator(tree, schema);
+
+    const config = readProjectConfiguration(tree, schema.project);
     expect(config.targets.stylelint).toBeDefined();
 
     try {
-      await generator(tree, defaultOptions);
+      await generator(tree, schema);
     } catch (error) {
       expect(error.message).toBe(
         "Project 'test' already has a stylelint target."
@@ -64,10 +71,11 @@ describe('nx-linter:configuration generator', () => {
   });
 
   it('should add a stylelint target with the specified formatter', async () => {
-    await libraryGenerator(tree, { name: 'test' });
-    await generator(tree, { ...defaultOptions, format: 'json' });
+    await libraryGenerator(tree, { ...defaultOptions, name: schema.project });
 
-    const config = readProjectConfiguration(tree, 'test');
+    await generator(tree, { ...schema, format: 'json' });
+
+    const config = readProjectConfiguration(tree, schema.project);
 
     expect(config).toBeDefined();
     expect(config.targets.stylelint).toBeDefined();

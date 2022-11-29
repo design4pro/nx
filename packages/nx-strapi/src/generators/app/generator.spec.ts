@@ -1,5 +1,5 @@
 import { readProjectConfiguration, Tree } from '@nrwl/devkit';
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
 import * as generateStrapi from 'strapi-generate-new';
 import generator from './generator';
 import { NxStrapiGeneratorSchema } from './schema';
@@ -11,7 +11,7 @@ describe('strapi generator', () => {
   const options: NxStrapiGeneratorSchema = { name: 'test' };
 
   beforeEach(() => {
-    appTree = createTreeWithEmptyWorkspace();
+    appTree = createTreeWithEmptyV1Workspace();
   });
 
   it('should run successfully', async () => {

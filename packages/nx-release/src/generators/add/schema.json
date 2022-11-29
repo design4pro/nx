@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "NxRelease",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Which project do you want to add semantic release to?",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "changelog": {
+      "description": "Create or update the changelog file",
+      "type": "boolean",
+      "default": false
+    },
+    "changelogFile": {
+      "description": "Changelog file name",
+      "type": "string",
+      "default": "CHANGELOG.md"
+    },
+    "skipFormat": {
+      "description": "Skip formatting files",
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": ["project"]
+}

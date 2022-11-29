@@ -1,6 +1,7 @@
-module.exports = {
-  displayName: 'nx-custom-webpack',
-  preset: '../../jest.preset.js',
+/* eslint-disable */
+export default {
+  displayName: 'nx-linter',
+
   globals: {
     'ts-jest': {
       tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -10,5 +11,6 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/packages/nx-custom-webpack',
+  coverageDirectory: '../../coverage/packages/nx-linter',
+  preset: '../../jest.preset.js',
 };

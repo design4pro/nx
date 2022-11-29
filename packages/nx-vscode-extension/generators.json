@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "Visual Studio Code Extension",
+  "version": "0.0.1",
+  "generators": {
+    "init": {
+      "factory": "./src/generators/init/init",
+      "schema": "./src/generators/init/schema.json",
+      "description": "Initialize @design4pro/nx-vscode-extension plugin",
+      "aliases": ["ng-add"]
+    },
+    "extension": {
+      "factory": "./src/generators/extension/extension",
+      "schema": "./src/generators/extension/schema.json",
+      "description": "Create an extension",
+      "aliases": ["ext"],
+      "x-type": "library"
+    }
+  },
+  "schematics": {
+    "init": {
+      "factory": "./src/generators/init/init.schematics",
+      "schema": "./src/generators/init/schema.json",
+      "description": "Initialize @design4pro/nx-vscode-extension plugin",
+      "aliases": ["ng-add"]
+    },
+    "extension": {
+      "factory": "./src/generators/extension/extension.schematics",
+      "schema": "./src/generators/extension/schema.json",
+      "description": "Create an extension",
+      "aliases": ["ext"],
+      "x-type": "library"
+    }
+  }
+}

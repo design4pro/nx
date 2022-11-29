@@ -1,0 +1,37 @@
+{
+  "name": "@design4pro/nx-release",
+  "version": "0.0.0",
+  "license": "MIT",
+  "keywords": [
+    "nx",
+    "plugin",
+    "release",
+    "semantic-release"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/design4pro/nx.git"
+  },
+  "author": {
+    "name": "Rafał Wolak",
+    "email": "r.wolak@design4.pro",
+    "url": "https://www.design4.pro"
+  },
+  "bugs": {
+    "url": "https://github.com/design4pro/nx/issues/"
+  },
+  "homepage": "https://github.com/design4pro/nx#readme",
+  "main": "src/index.js",
+  "generators": "./generators.json",
+  "devDependencies": {
+    "@semantic-release/commit-analyzer": "~9.0.2",
+    "@semantic-release/release-notes-generator": "~10.0.3",
+    "@types/semantic-release": "~17.2.3",
+    "get-stream": "~6.0.1",
+    "split2": "~4.1.0",
+    "stream-buffers": "~3.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
