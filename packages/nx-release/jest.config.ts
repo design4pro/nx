@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName: 'nx-release',
-
+  preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -12,5 +12,4 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/packages/nx-release',
-  preset: '../../jest.preset.js',
 };

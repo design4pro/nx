@@ -12,7 +12,7 @@ describe('git-utils', () => {
   });
 
   describe('getPathCommitHashes', () => {
-    it('can get commits', async () => {
+    it('Can get commits', async () => {
       const stream = new ReadableStreamBuffer();
       stream.put('test1\ntest2\n');
       stream.stop();

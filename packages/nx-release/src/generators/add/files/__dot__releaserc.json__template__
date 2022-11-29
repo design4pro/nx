@@ -1,13 +1,13 @@
 {
   "extends": "<%= offsetFromRoot %>.releaserc.json",
-  "tagFormat": "<%= project %>-v${version}",
+  "tagFormat": "<%= name %>-v${version}",
   "plugins": [
     [
       "@design4pro/nx-release",
       {
-        project: "<%= project %>",
+        project: "<%= name %>",
         projectRoot: "<%= projectRoot %>",
-        buildOutput: "<%= projectDist %>",
+        pkgRoot: "<%= projectDist %>",
         changelogFile: "<%= changelogFile %>",
       }
     ],<% if (changelog) { %>
@@ -23,7 +23,7 @@
       '@semantic-release/git',
       {
         assets: ["<%= changelogFile %>"],
-        message: "chore(<%= project %>): release ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
+        message: "chore(<%= name %>): release ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
       },
     ]<% } %>
   ]

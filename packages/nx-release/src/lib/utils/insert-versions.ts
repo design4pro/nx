@@ -47,7 +47,7 @@ function replacePackageVersion(
  * with specific version numbers based on the "package.json"
  * in provided package root path.
  */
-async function insertVersions(packageRoot: string) {
+export async function insertVersions(packageRoot: string) {
   const resolvedPackageRoot = resolve(packageRoot);
 
   const packageJsonPath = join(resolvedPackageRoot, 'package.json');
@@ -84,6 +84,3 @@ async function insertVersions(packageRoot: string) {
 
   writeFileSync(versionsJsPath, updatedVersionsJs);
 }
-
-const packagePath = process.argv[2];
-insertVersions(packagePath).catch(console.error);

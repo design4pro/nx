@@ -1,106 +1,40 @@
 import { Tree } from '@nrwl/devkit';
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
-import { Linter } from '@nrwl/linter';
-import { Schema } from '../schema';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { libraryGenerator } from '@nrwl/workspace';
+import generator from '../add';
+import { AddSchema } from '../schema';
 import { normalizeOptions } from './normalize-options';
 
 describe('Normalize Options', () => {
   let appTree: Tree;
 
+  const defaultOptions = {
+    buildable: true,
+    compiler: 'tsc',
+  };
+
   beforeEach(() => {
-    appTree = createTreeWithEmptyV1Workspace();
+    appTree = createTreeWithEmptyWorkspace();
   });
 
-  it('should normalize options with name in kebab case', () => {
-    const schema: Schema = {
-      displayName: 'my-extension',
-      linter: Linter.EsLint,
+  it('Should normalize options with name in kebab case', async () => {
+    const schema: AddSchema = {
+      project: 'my-lib',
     };
 
-    const options = normalizeOptions(appTree, schema);
-    expect(options).toEqual({
-      description: 'my-extension extension',
-      name: 'my-extension',
-      displayName: 'my-extension',
-      importPath: '@proj/my-extension',
-      linter: Linter.EsLint,
-      parsedTags: [],
-      projectRoot: 'libs/my-extension',
-      strict: true,
-    });
-  });
+    await libraryGenerator(appTree, { ...defaultOptions, ...{ name: schema.project } });
 
-  it('should normalize options with name in camel case', () => {
-    const schema: Schema = {
-      displayName: 'myExtension',
-    };
+    await generator(appTree, schema);
+
     const options = normalizeOptions(appTree, schema);
 
     expect(options).toEqual({
-      description: 'myExtension extension',
-      name: 'my-extension',
-      displayName: 'myExtension',
-      importPath: '@proj/my-extension',
-      linter: Linter.EsLint,
-      parsedTags: [],
-      projectRoot: 'libs/my-extension',
-      strict: true,
-    });
-  });
-
-  it('should normalize options with directory', () => {
-    const schema: Schema = {
-      displayName: 'my-extension',
-      directory: 'directory',
-    };
-    const options = normalizeOptions(appTree, schema);
-
-    expect(options).toEqual({
-      description: 'my-extension extension',
-      name: 'my-extension',
-      directory: 'directory',
-      displayName: 'my-extension',
-      importPath: '@proj/directory/my-extension',
-      linter: Linter.EsLint,
-      parsedTags: [],
-      projectRoot: 'libs/directory/my-extension',
-      strict: true,
-    });
-  });
-
-  it('should normalize options that has directory in its name', () => {
-    const schema: Schema = {
-      displayName: 'directory/my-extension',
-    };
-    const options = normalizeOptions(appTree, schema);
-
-    expect(options).toEqual({
-      description: 'directory/my-extension extension',
-      name: 'directory-my-extension',
-      displayName: 'directory/my-extension',
-      importPath: '@proj/directory/my-extension',
-      linter: Linter.EsLint,
-      parsedTags: [],
-      projectRoot: 'libs/directory/my-extension',
-      strict: true,
-    });
-  });
-
-  it('should normalize options with display name', () => {
-    const schema: Schema = {
-      displayName: 'my-extension',
-    };
-    const options = normalizeOptions(appTree, schema);
-
-    expect(options).toEqual({
-      description: 'my-extension extension',
-      name: 'my-extension',
-      displayName: 'my-extension',
-      importPath: '@proj/my-extension',
-      linter: Linter.EsLint,
-      parsedTags: [],
-      projectRoot: 'libs/my-extension',
-      strict: true,
+      changelog: true,
+      changelogFile: 'CHANGELOG.md',
+      project: 'my-lib',
+      projectDist: 'dist/libs/my-lib',
+      projectRoot: 'libs/my-lib',
+      releaseTargetExists: true,
     });
   });
 });

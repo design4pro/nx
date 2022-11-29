@@ -1,20 +1,33 @@
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
-import { Tree, readProjectConfiguration } from '@nrwl/devkit';
-
+import { readProjectConfiguration, Tree } from '@nrwl/devkit';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { libraryGenerator } from '@nrwl/workspace';
 import generator from './add';
-import { NxReleaseGeneratorSchema } from './schema';
+import { AddSchema } from './schema';
 
-describe('nx-release generator', () => {
+describe('nx-release add generator', () => {
   let appTree: Tree;
-  const options: NxReleaseGeneratorSchema = { name: 'test' };
+
+  const defaultOptions = {
+    buildable: true,
+    compiler: 'tsc',
+  };
+
+  const schema: AddSchema = { project: 'my-lib' };
 
   beforeEach(() => {
-    appTree = createTreeWithEmptyV1Workspace();
+    appTree = createTreeWithEmptyWorkspace();
   });
 
-  it('should run successfully', async () => {
-    await generator(appTree, options);
-    const config = readProjectConfiguration(appTree, 'test');
+  it('Should run successfully', async () => {
+    await libraryGenerator(appTree, {
+      ...defaultOptions,
+      ...{ name: schema.project },
+    });
+
+    await generator(appTree, schema);
+
+    const config = readProjectConfiguration(appTree, schema.project);
+
     expect(config).toBeDefined();
   });
 });
