@@ -7,12 +7,16 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["packages/nx-linter/**/*.ts"]
+        "lintFilePatterns": [
+          "packages/nx-linter/**/*.ts"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/packages/nx-linter"],
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/nx-linter"
+      ],
       "options": {
         "jestConfig": "packages/nx-linter/jest.config.ts",
         "passWithNoTests": true
@@ -20,7 +24,9 @@
     },
     "build": {
       "executor": "@nrwl/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/nx-linter",
         "tsConfig": "packages/nx-linter/tsconfig.lib.json",
@@ -54,9 +60,11 @@
             "command": "npx semantic-release"
           }
         ],
-        "cwd": "dist/packages/nx-linter"
+        "cwd": "packages/nx-linter"
       }
     }
   },
-  "tags": ["linter"]
+  "tags": [
+    "linter"
+  ]
 }

@@ -7,12 +7,16 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["packages/nx-custom-webpack/**/*.ts"]
+        "lintFilePatterns": [
+          "packages/nx-custom-webpack/**/*.ts"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/packages/nx-custom-webpack"],
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/nx-custom-webpack"
+      ],
       "options": {
         "jestConfig": "packages/nx-custom-webpack/jest.config.ts",
         "passWithNoTests": true
@@ -20,7 +24,9 @@
     },
     "build": {
       "executor": "@nrwl/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/nx-custom-webpack",
         "tsConfig": "packages/nx-custom-webpack/tsconfig.lib.json",
@@ -49,9 +55,11 @@
             "command": "npx semantic-release"
           }
         ],
-        "cwd": "dist/packages/nx-custom-webpack"
+        "cwd": "packages/nx-custom-webpack"
       }
     }
   },
-  "tags": ["webpack"]
+  "tags": [
+    "webpack"
+  ]
 }
