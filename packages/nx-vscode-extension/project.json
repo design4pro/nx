@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/nx-vscode-extension",
         "main": "packages/nx-vscode-extension/src/index.ts",
@@ -37,14 +39,20 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["packages/nx-vscode-extension/**/*.ts"]
+        "lintFilePatterns": [
+          "packages/nx-vscode-extension/**/*.ts"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/packages/nx-vscode-extension"],
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/nx-vscode-extension"
+      ],
       "options": {
         "jestConfig": "packages/nx-vscode-extension/jest.config.ts",
         "passWithNoTests": true
@@ -58,9 +66,11 @@
             "command": "npx semantic-release"
           }
         ],
-        "cwd": "dist/packages/nx-vscode-extension"
+        "cwd": "packages/nx-vscode-extension"
       }
     }
   },
-  "tags": ["vscode"]
+  "tags": [
+    "vscode"
+  ]
 }
