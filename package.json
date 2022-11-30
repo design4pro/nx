@@ -20,20 +20,13 @@
     "format": "nx format:write",
     "format:write": "nx format:write",
     "format:check": "nx format:check",
-    "postinstall": "rm -rf ./node_modules/@angular-devkit/build-angular/node_modules/webpack",
     "update": "nx migrate latest",
-    "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "commit": "commit",
-    "local-registry": "./tools/scripts/local-registry.sh",
-    "prerelease": "nx affected:build --base origin/main --parallel",
-    "release": "nx affected --target release --base origin/main --parallel"
+    "local-registry": "./tools/scripts/local-registry.sh"
   },
   "private": true,
-  "dependencies": {
-    "tslib": "^2.0.0"
-  },
   "devDependencies": {
     "@angular-devkit/architect": "^0.1402.9",
     "@angular-devkit/build-angular": "^14.2.9",

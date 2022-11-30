@@ -1,12 +1,17 @@
 name: Release
 
+# Controls when the action will run.
 on:
+  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches:
       - main
       - next
       - beta
       - alpha
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 env:
   CI: true
@@ -16,23 +21,46 @@ jobs:
     name: Build, Release & Publish
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout [main] 🛎️
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js 16.x 📦
+        uses: actions/setup-node@v3
+        with:
+          always-auth: true
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: npm ci
+      - id: get_branch_name
+        run: echo "short_ref=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+
+      - name: Get last successful commit
+        uses: nrwl/last-successful-commit-action@v1
+        id: last_successful_commit
+        with:
+          branch: ${{ steps.get_branch_name.outputs.short_ref }}
+          workflow_id: release-ci.yml
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Dependencies 🔧
         run: npm install --no-package-lock --legacy-peer-deps
 
       - name: Lint Workspace & Code
-        run: |
-          npm run nx -- workspace-lint
-          npm run affected:lint -- --all
+        run: npm run affected:lint -- --base=${{ steps.last_successful_commit.outputs.commit_hash }}
 
       - name: Unit Tests
-        run: npm run affected:test -- --all
+        run: npm run affected:test -- --base=${{ steps.last_successful_commit.outputs.commit_hash }}
 
-      - name: Build, Release on GitHub & Publish to NPM 🚀
+      - name: Build
+        run: npm run affected:build -- --base=${{ steps.last_successful_commit.outputs.commit_hash }}
+
+      - name: Release on GitHub & Publish to NPM 🚀
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN || secrets.GITHUB_TOKEN }}
-        run: npm run release
+        run: npx nx affected --target release --base=${{ steps.last_successful_commit.outputs.commit_hash }}
