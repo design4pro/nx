@@ -1,7 +1,6 @@
 import {
   formatFiles,
   generateFiles,
-  getWorkspaceLayout,
   logger,
   names,
   offsetFromRoot,
@@ -18,17 +17,15 @@ import { AddSchema } from './schema';
 
 function addReleaseTarget(tree: Tree, options: NormalizedSchema) {
   const projectConfig = readProjectConfiguration(tree, options.project);
-  const { libsDir } = getWorkspaceLayout(tree);
 
   projectConfig.targets.release = {
     executor: '@nrwl/workspace:run-commands',
     options: {
       commands: [
         {
-          command: 'npx semantic-release',
+          command: `npx semantic-release -e ./${options.projectDist}/.releaserc.json`,
         },
       ],
-      cwd: `${libsDir}/${options.project}`,
     },
   };
 

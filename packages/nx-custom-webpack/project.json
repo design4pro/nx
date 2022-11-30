@@ -52,10 +52,9 @@
       "options": {
         "commands": [
           {
-            "command": "npx semantic-release"
+            "command": "npx semantic-release -e ./packages/nx-custom-webpack/.releaserc.json"
           }
-        ],
-        "cwd": "packages/nx-custom-webpack"
+        ]
       }
     }
   },

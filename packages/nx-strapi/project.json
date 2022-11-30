@@ -57,10 +57,9 @@
       "options": {
         "commands": [
           {
-            "command": "npx semantic-release"
+            "command": "npx semantic-release -e ./packages/nx-strapi/.releaserc.json"
           }
-        ],
-        "cwd": "packages/nx-strapi"
+        ]
       }
     }
   },
