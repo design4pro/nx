@@ -33,9 +33,7 @@ jobs:
         with:
           always-auth: true
           node-version: '16.x'
-          registry-url: 'https://registry.npmjs.org'
 
-      - run: npm ci
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         id: setSHAs
         uses: nrwl/nx-set-shas@v3
