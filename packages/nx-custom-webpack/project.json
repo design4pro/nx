@@ -49,7 +49,7 @@
             "command": "npx semantic-release"
           }
         ],
-        "cwd": "packages/nx-custom-webpack"
+        "cwd": "dist/packages/nx-custom-webpack"
       }
     }
   },

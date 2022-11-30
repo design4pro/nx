@@ -55,12 +55,12 @@
       "options": {
         "commands": [
           {
-            "command": "npx semantic-release --debug --dry-run"
+            "command": "npx semantic-release"
           }
         ],
-        "cwd": "packages/nx-release"
+        "cwd": "dist/packages/nx-release"
       }
     }
   },
-  "tags": []
+  "tags": ["release"]
 }

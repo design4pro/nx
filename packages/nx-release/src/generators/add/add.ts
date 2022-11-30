@@ -1,7 +1,6 @@
 import {
   formatFiles,
   generateFiles,
-  getWorkspaceLayout,
   logger,
   names,
   offsetFromRoot,
@@ -18,7 +17,6 @@ import { AddSchema } from './schema';
 
 function addReleaseTarget(tree: Tree, options: NormalizedSchema) {
   const projectConfig = readProjectConfiguration(tree, options.project);
-  const { libsDir } = getWorkspaceLayout(tree);
 
   projectConfig.targets.release = {
     executor: '@nrwl/workspace:run-commands',
@@ -28,7 +26,7 @@ function addReleaseTarget(tree: Tree, options: NormalizedSchema) {
           command: 'npx semantic-release',
         },
       ],
-      cwd: `${libsDir}/${options.project}`,
+      cwd: `${options.projectDist}`,
     },
   };
 
@@ -54,10 +52,11 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
 export async function addGenerator(tree: Tree, options: AddSchema) {
   const normalizedOptions = normalizeOptions(tree, options);
 
-  if (normalizedOptions.releaseTargetExists)
+  if (normalizedOptions.releaseTargetExists) {
     throw new Error(
       `Project '${options.project}' already has a release target.`
     );
+  }
 
   logger.info(
     `Adding Semantic Release configuration and target to '${options.project}' ...\n`
