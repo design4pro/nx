@@ -8,7 +8,7 @@ export async function buildExecutor(
   options: BuildExecutorSchema,
   context: ExecutorContext
 ) {
-  const { outputPath, ..._rest } = options;
+  const { outputPath } = options;
 
   const command = `tsc -p tsconfig.app.json`.trim();
 

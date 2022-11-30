@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { mocked } from 'jest-mock';
 import { Commit } from 'semantic-release';
 import { getPathCommitHashes } from './utils/git';

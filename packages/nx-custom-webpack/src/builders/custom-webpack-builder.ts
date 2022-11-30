@@ -27,6 +27,7 @@ export class CustomWebpackBuilder {
     root: Path,
     config: CustomWebpackBuilderConfig,
     baseWebpackConfig: Configuration,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     buildOptions: any,
     targetOptions: TargetOptions,
     logger: logging.LoggerApi
