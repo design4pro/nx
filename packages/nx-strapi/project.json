@@ -54,7 +54,7 @@
             "command": "npx semantic-release"
           }
         ],
-        "cwd": "packages/nx-strapi"
+        "cwd": "dist/packages/nx-strapi"
       }
     }
   },

@@ -15,7 +15,6 @@ export function normalizeOptions(
   tree: Tree,
   options: AddSchema
 ): NormalizedSchema {
-  // TODO: [] move this check to generator
   const projectConfig = readProjectConfiguration(tree, options.project);
   const { build } = projectConfig.targets;
 
