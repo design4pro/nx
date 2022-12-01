@@ -53,11 +53,11 @@
       }
     },
     "release": {
-      "executor": "nx:run-commands",
+      "executor": "@nrwl/workspace:run-commands",
       "options": {
         "commands": [
           {
-            "command": "npx semantic-release -e ./packages/nx-linter/.releaserc.json"
+            "command": "npx semantic-release -e ./packages/nx-linter/.releaserc.js"
           }
         ]
       }

@@ -1,6 +1,6 @@
 {
   "name": "@design4pro/nx-linter",
-  "version": "1.0.1",
+  "version": "0.0.0",
   "description": "Lint Plugin for Nx",
   "keywords": [
     "nx",
