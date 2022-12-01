@@ -22,7 +22,10 @@ describe('Normalize Options', () => {
       project: 'my-lib',
     };
 
-    await libraryGenerator(appTree, { ...defaultOptions, ...{ name: schema.project } });
+    await libraryGenerator(appTree, {
+      ...defaultOptions,
+      ...{ name: schema.project },
+    });
 
     await generator(appTree, schema);
 
@@ -34,6 +37,7 @@ describe('Normalize Options', () => {
       project: 'my-lib',
       projectDist: 'dist/libs/my-lib',
       projectRoot: 'libs/my-lib',
+      relativeWorkspaceRoot: '../../',
       releaseTargetExists: true,
     });
   });
