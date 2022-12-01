@@ -8,8 +8,15 @@ import { AddSchema } from '../schema';
 export interface NormalizedSchema extends AddSchema {
   projectRoot: string;
   projectDist: string;
+  relativeWorkspaceRoot: string;
   releaseTargetExists: boolean;
 }
+
+const buildReversePath = (path) =>
+  path
+    .split('/')
+    .map(() => '..')
+    .join('/');
 
 export function normalizeOptions(
   tree: Tree,
@@ -24,10 +31,12 @@ export function normalizeOptions(
     );
   } else {
     const { libsDir } = getWorkspaceLayout(tree);
+    const relativeWorkspaceRoot = buildReversePath(projectConfig.root);
 
     return {
       ...options,
       projectRoot: projectConfig.root,
+      relativeWorkspaceRoot: `${relativeWorkspaceRoot}/`,
       projectDist:
         build.options.outputPath || `dist/${libsDir}/${options.project}`,
       changelog: options.changelog ?? true,

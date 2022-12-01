@@ -1,6 +1,6 @@
 import { readJson, Tree } from '@nrwl/devkit';
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
-import { semanticReleaseVersion } from '../../utils/versions';
+import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { nxReleaseVersion, semanticReleaseVersion } from '../../utils/versions';
 import { initGenerator } from './init';
 import { Schema } from './schema';
 
@@ -8,7 +8,7 @@ describe('init', () => {
   let tree: Tree;
 
   beforeEach(() => {
-    tree = createTreeWithEmptyV1Workspace();
+    tree = createTreeWithEmptyWorkspace();
   });
 
   it('should update package.json', async () => {
@@ -19,6 +19,7 @@ describe('init', () => {
 
     expect(packageJson.devDependencies).toEqual(
       expect.objectContaining({
+        '@design4pro/nx-release': nxReleaseVersion,
         'semantic-release': semanticReleaseVersion,
       })
     );

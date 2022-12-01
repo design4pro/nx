@@ -27,6 +27,7 @@
     "@semantic-release/commit-analyzer": "~9.0.2",
     "@semantic-release/release-notes-generator": "~10.0.3",
     "@types/semantic-release": "~17.2.3",
+    "deepmerge": "^4.2.2",
     "get-stream": "~6.0.1",
     "split2": "~4.1.0",
     "stream-buffers": "~3.0.2"

@@ -1,0 +1,10 @@
+const { createReleaseConfigWithScopeFilter } = require('@design4pro/nx-release');
+const options = require('<%= relativeWorkspaceRoot %>.releaserc');
+
+module.exports = createReleaseConfigWithScopeFilter({
+  projectScope: '<%= name %>',
+  projectRoot: '<%= projectRoot %>',
+  buildOutput: '<%= projectDist %>',
+  options,
+  <% if (changelog) { %>changelogFile: "<%= changelogFile %>"<% } %>
+});
