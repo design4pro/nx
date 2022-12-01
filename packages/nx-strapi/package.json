@@ -25,6 +25,7 @@
   "generators": "./generators.json",
   "executors": "./executors.json",
   "peerDependencies": {
+    "@design4pro/nx-release": "^0.0.0",
     "@nrwl/workspace": "*"
   },
   "devDependencies": {
