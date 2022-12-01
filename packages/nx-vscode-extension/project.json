@@ -63,7 +63,7 @@
       "options": {
         "commands": [
           {
-            "command": "npx semantic-release -e ./packages/nx-vscode-extension/.releaserc.json"
+            "command": "npx semantic-release -e ./packages/nx-vscode-extension/.releaserc.js"
           }
         ]
       }

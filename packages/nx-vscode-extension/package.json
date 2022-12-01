@@ -1,7 +1,7 @@
 {
   "name": "@design4pro/nx-vscode-extension",
   "description": "Visual Studio Code Extension Plugin for Nx",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "license": "MIT",
   "keywords": [
     "nx",
