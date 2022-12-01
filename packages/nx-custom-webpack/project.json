@@ -48,11 +48,11 @@
       }
     },
     "release": {
-      "executor": "nx:run-commands",
+      "executor": "@nrwl/workspace:run-commands",
       "options": {
         "commands": [
           {
-            "command": "npx semantic-release -e ./packages/nx-custom-webpack/.releaserc.json"
+            "command": "npx semantic-release -e ./packages/nx-custom-webpack/.releaserc.js"
           }
         ]
       }
