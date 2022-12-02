@@ -23,7 +23,7 @@ function addReleaseTarget(tree: Tree, options: NormalizedSchema) {
     options: {
       commands: [
         {
-          command: `npx semantic-release -e ./${options.projectDist}/.releaserc.json`,
+          command: `npx semantic-release -e ./${options.projectRoot}/.releaserc.js`,
         },
       ],
     },

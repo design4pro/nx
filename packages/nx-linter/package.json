@@ -1,6 +1,6 @@
 {
   "name": "@design4pro/nx-linter",
-  "version": "1.0.1",
+  "version": "0.0.0",
   "description": "Lint Plugin for Nx",
   "keywords": [
     "nx",
@@ -24,6 +24,7 @@
   "generators": "./generators.json",
   "executors": "./executors.json",
   "dependencies": {
+    "@design4pro/nx-release": "^0.0.0",
     "@nrwl/devkit": "^12.0.0"
   },
   "peerDependencies": {

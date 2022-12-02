@@ -7,13 +7,14 @@ import {
 import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
 import * as path from 'path';
 import { getTemplateOptions } from '../../utils/get-template-options';
-import { semanticReleaseVersion } from '../../utils/versions';
+import { nxReleaseVersion, semanticReleaseVersion } from '../../utils/versions';
 import { Schema } from './schema';
 
 export function updateDependencies(tree: Tree) {
   const devDependencies = {};
   const dependencies = {};
 
+  devDependencies['@design4pro/nx-release'] = nxReleaseVersion;
   devDependencies['semantic-release'] = semanticReleaseVersion;
 
   return addDependenciesToPackageJson(tree, dependencies, devDependencies);
@@ -21,10 +22,10 @@ export function updateDependencies(tree: Tree) {
 
 function addFiles(tree: Tree) {
   const templateOptions = {
-    ...getTemplateOptions(tree)
+    ...getTemplateOptions(tree),
   };
 
-  if (!tree.exists('.releaserc.json')) {
+  if (!tree.exists('.releaserc.js')) {
     generateFiles(
       tree,
       path.join(__dirname, 'root-files'),

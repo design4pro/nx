@@ -76,9 +76,12 @@ export async function insertVersions(packageRoot: string) {
 
   const updatedVersionsJs = packages.reduce((versionsJs, packageName) => {
     const packageVersion = getPackageVersion(packageName, packageJson);
+    console.log(`Replacing version for ${packageName} with ${packageVersion}`);
+
     if (!packageVersion) {
       return versionsJs;
     }
+
     return replacePackageVersion(packageName, packageVersion, versionsJs);
   }, originalVersionsJs);
 

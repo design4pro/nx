@@ -4,9 +4,9 @@ const {
 const options = require('../../.releaserc');
 
 module.exports = createReleaseConfigWithScopeFilter({
-  projectScope: 'nx-strapi',
-  projectRoot: 'packages/nx-strapi',
-  buildOutput: 'dist/packages/nx-strapi',
+  projectScope: 'nx-release',
+  projectRoot: 'packages/nx-release',
+  buildOutput: 'dist/packages/nx-release',
   options,
   changelogFile: 'CHANGELOG.md',
 });

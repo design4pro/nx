@@ -1,0 +1,30 @@
+{
+  "extends": "../../.releaserc.json",
+  "tagFormat": "nx-custom-webpack-v${version}",
+  "plugins": [
+    [
+      "@design4pro/nx-release",
+      {
+        "project": "nx-custom-webpack",
+        "projectRoot": "packages/nx-custom-webpack",
+        "pkgRoot": "dist/packages/nx-custom-webpack",
+        "changelogFile": "CHANGELOG.md"
+      }
+    ],
+    ["@semantic-release/changelog", { "changelogFile": "CHANGELOG.md" }],
+    [
+      "@semantic-release/npm",
+      {
+        "pkgRoot": "dist/packages/nx-custom-webpack"
+      }
+    ],
+    "@semantic-release/github",
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["CHANGELOG.md"],
+        "message": "chore(nx-custom-webpack): release ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ]
+  ]
+}
