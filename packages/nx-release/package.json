@@ -24,6 +24,7 @@
   "main": "src/index.js",
   "generators": "./generators.json",
   "devDependencies": {
+    "@design4pro/nx-release": "^1.0.0",
     "@semantic-release/commit-analyzer": "~9.0.2",
     "@semantic-release/release-notes-generator": "~10.0.3",
     "@types/semantic-release": "~17.2.3",
