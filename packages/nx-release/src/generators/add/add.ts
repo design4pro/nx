@@ -19,7 +19,7 @@ function addReleaseTarget(tree: Tree, options: NormalizedSchema) {
   const projectConfig = readProjectConfiguration(tree, options.project);
 
   projectConfig.targets.release = {
-    executor: '@nrwl/workspace:run-commands',
+    executor: 'nx:run-commands',
     options: {
       commands: [
         {
