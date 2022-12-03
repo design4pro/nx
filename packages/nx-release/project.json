@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/nx-release",
         "main": "packages/nx-release/src/index.ts",
@@ -37,21 +39,27 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["packages/nx-release/**/*.ts"]
+        "lintFilePatterns": [
+          "packages/nx-release/**/*.ts"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/packages/nx-release"],
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/nx-release"
+      ],
       "options": {
         "jestConfig": "packages/nx-release/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "release": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": [
           {
@@ -61,5 +69,7 @@
       }
     }
   },
-  "tags": ["release"]
+  "tags": [
+    "release"
+  ]
 }

@@ -1,16 +1,16 @@
 import * as merge from 'deepmerge';
 import { createCommitTransformerWithScopeFilter } from './utils/commit-transformer';
-import { insertVersions } from './utils/insert-versions';
 import { createReleaseRulesWithScopeFilter } from './utils/release-rules';
-
-const buildReversePath = (path) =>
-  path
-    .split('/')
-    .map(() => '..')
-    .join('/');
 
 const formatFile = (file) => `nx format:write --files ${file}`;
 const copyFile = (file, dest) => `cp ${file} ${dest}`;
+const toolsScript = (script: string, ...args) =>
+  ['node', `./node_modules/@design4pro/nx-release/src/${script}`, ...args].join(
+    ' '
+  );
+
+const insertVersions = (buildOutput) =>
+  toolsScript('lib/utils/insert-versions.js', buildOutput);
 
 export function createReleaseConfigWithScopeFilter({
   projectScope,
@@ -22,10 +22,8 @@ export function createReleaseConfigWithScopeFilter({
   projectRoot = projectRoot || `packages/${projectScope}`;
   buildOutput = buildOutput || `dist/packages/${projectScope}`;
 
-  const relativeWorkspaceRoot = buildReversePath(projectRoot);
-  const relativeBuildOutput = `${relativeWorkspaceRoot}/${buildOutput}`;
-
   const releaseCommit = `chore(${projectScope}): release \${nextRelease.version}\n\n\${nextRelease.notes}\n\n***\n[skip ci]`;
+  
   return merge(
     {
       plugins: [
@@ -39,10 +37,18 @@ export function createReleaseConfigWithScopeFilter({
             },
           },
         ],
-        '@semantic-release/release-notes-generator',
-        ['@semantic-release/changelog', { changelogFile }],
-        '@semantic-release/github',
-        ['@semantic-release/npm', { pkgRoot: relativeBuildOutput }],
+        ['@semantic-release/release-notes-generator', { preset: 'angular' }],
+        [
+          '@semantic-release/changelog',
+          { changelogFile: `${projectRoot}/${changelogFile}` },
+        ],
+        [
+          '@semantic-release/github',
+          {
+            releasedLabels: ['released'],
+          },
+        ],
+        ['@semantic-release/npm', { pkgRoot: buildOutput }],
         [
           '@semantic-release/exec',
           {
@@ -51,13 +57,12 @@ export function createReleaseConfigWithScopeFilter({
               copyFile(`${projectRoot}/${changelogFile}`, buildOutput),
               insertVersions(buildOutput),
             ].join(' && '),
-            execCwd: relativeWorkspaceRoot,
           },
         ],
         [
           '@semantic-release/git',
           {
-            assets: [changelogFile],
+            assets: [`${projectRoot}/${changelogFile}`],
             message: releaseCommit,
           },
         ],

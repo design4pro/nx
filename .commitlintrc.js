@@ -7,6 +7,7 @@ module.exports = {
   extends: ['@commitlint/config-angular'],
   rules: {
     'body-leading-blank': [0, 'never'],
+    'type-enum': [2, 'always', ['chore', ...value()]],
     'scope-empty': [0],
     'scope-enum': (ctx) =>
       getProjects(ctx).then((packages) => [
