@@ -76,7 +76,6 @@ export async function insertVersions(packageRoot: string) {
 
   const updatedVersionsJs = packages.reduce((versionsJs, packageName) => {
     const packageVersion = getPackageVersion(packageName, packageJson);
-    console.log(`Replacing version for ${packageName} with ${packageVersion}`);
 
     if (!packageVersion) {
       return versionsJs;
@@ -87,3 +86,6 @@ export async function insertVersions(packageRoot: string) {
 
   writeFileSync(versionsJsPath, updatedVersionsJs);
 }
+
+const packagePath = process.argv[2];
+insertVersions(packagePath).catch(console.error);
