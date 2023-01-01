@@ -1,16 +1,18 @@
 {
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
     "nx-custom-webpack": "packages/nx-custom-webpack",
     "nx-custom-webpack-e2e": "e2e/nx-custom-webpack-e2e",
     "nx-linter": "packages/nx-linter",
     "nx-linter-e2e": "e2e/nx-linter-e2e",
+    "nx-opencart": "packages/nx-opencart",
+    "nx-opencart-e2e": "e2e/nx-opencart-e2e",
     "nx-release": "packages/nx-release",
     "nx-release-e2e": "e2e/nx-release-e2e",
     "nx-strapi": "packages/nx-strapi",
     "nx-strapi-e2e": "e2e/nx-strapi-e2e",
     "nx-vscode-extension": "packages/nx-vscode-extension",
     "nx-vscode-extension-e2e": "e2e/nx-vscode-extension-e2e"
-  },
-  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
+  }
 }

@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "nx-opencart",
+  "version": "0.0.1",
+  "generators": {
+    "theme": {
+      "factory": "./src/generators/theme/theme",
+      "schema": "./src/generators/theme/schema.json",
+      "description": "theme generator"
+    }
+  },
+  "schematics": {
+    "theme": {
+      "factory": "./src/generators/theme/theme.schematics",
+      "schema": "./src/generators/theme/schema.json",
+      "description": "Create an theme",
+      "x-type": "application"
+    }
+  }
+}
