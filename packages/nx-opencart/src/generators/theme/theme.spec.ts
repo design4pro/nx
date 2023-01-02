@@ -1,7 +1,6 @@
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-import { Tree, readProjectConfiguration } from '@nrwl/devkit';
-
-import generator from './theme';
+import { readProjectConfiguration, Tree } from '@nrwl/devkit';
+import { themeGenerator } from './theme';
 import { Schema } from './schema';
 
 describe('nx-opencart generator', () => {
@@ -13,7 +12,7 @@ describe('nx-opencart generator', () => {
   });
 
   it('should run successfully', async () => {
-    await generator(appTree, options);
+    await themeGenerator(appTree, options);
     const config = readProjectConfiguration(appTree, 'test');
     expect(config).toBeDefined();
   });

@@ -1,0 +1,9 @@
+<?php
+
+namespace Opencart\System\Library\Extension\<%= className %>;
+
+class MyClass {
+	public function test() {
+		echo 'I have been called!';
+	}
+}

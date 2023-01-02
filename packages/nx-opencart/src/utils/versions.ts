@@ -1,0 +1,9 @@
+export const nxWebpackVersion = '15.4.2';
+export const tailwindcssVersion = '3.2.4';
+export const postcssVersion = '8.4.20';
+export const autoprefixerVersion = '10.4.13';
+export const postcssImportVersion = '15.1.0';
+export const postcssNestingVersion = '10.2.0';
+export const postcssPresetEnvVersion = '7.8.3';
+export const tailwindcssNestingVersion = '0.0.0-insiders.565cd3e';
+export const cssnanoVersion = '5.1.14';

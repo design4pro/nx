@@ -1,0 +1,24 @@
+const tailwindcss = require("tailwindcss");
+const autoprefixer = require("autoprefixer");
+const cssnano = require("cssnano");
+const postcssPresetEnv = require("postcss-preset-env");
+const postcssImport = require("postcss-import");
+const tailwindNesting = require("@tailwindcss/nesting");
+const postcssNesting = require("postcss-nesting");
+const devMode = process.env.NODE_ENV === "development";
+
+module.exports = {
+  syntax: "postcss-scss",
+  plugins: [
+    postcssImport,
+    postcssPresetEnv({
+      features: { "nesting-rules": false }
+    }),
+    tailwindNesting(postcssNesting),
+    tailwindcss,
+    autoprefixer,
+    devMode ? null : cssnano({
+      preset: "default"
+    })
+  ]
+};

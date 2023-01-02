@@ -8,37 +8,45 @@ import {
 
 describe('nx-opencart e2e', () => {
   it('should create nx-opencart', async () => {
-    const plugin = uniq('nx-opencart');
-    ensureNxProject('@design4pro/nx-opencart', 'dist/packages/nx-opencart');
-    await runNxCommandAsync(
-      `generate @design4pro/nx-opencart:nx-opencart ${plugin}`
-    );
+    const theme = uniq('nx-opencart');
 
-    const result = await runNxCommandAsync(`build ${plugin}`);
+    ensureNxProject('@design4pro/nx-opencart', 'dist/packages/nx-opencart');
+
+    await runNxCommandAsync(`generate @design4pro/nx-opencart:theme ${theme}`);
+
+    const result = await runNxCommandAsync(`run ${theme}:build`);
+
     expect(result.stdout).toContain('Executor ran');
-  }, 120000);
+  }, 200000);
 
   describe('--directory', () => {
     it('should create src in the specified directory', async () => {
-      const plugin = uniq('nx-opencart');
+      const theme = uniq('nx-opencart');
+
       ensureNxProject('@design4pro/nx-opencart', 'dist/packages/nx-opencart');
+
       await runNxCommandAsync(
-        `generate @design4pro/nx-opencart:nx-opencart ${plugin} --directory subdir`
+        `generate @design4pro/nx-opencart:theme ${theme} --directory subdir`
       );
+
       expect(() =>
-        checkFilesExist(`apps/subdir/${plugin}/src/index.ts`)
+        checkFilesExist(`apps/subdir/${theme}/src/install.json`)
       ).not.toThrow();
     }, 120000);
   });
 
   describe('--tags', () => {
     it('should add tags to the project', async () => {
-      const plugin = uniq('nx-opencart');
+      const theme = uniq('nx-opencart');
+
       ensureNxProject('@design4pro/nx-opencart', 'dist/packages/nx-opencart');
+
       await runNxCommandAsync(
-        `generate @design4pro/nx-opencart:nx-opencart ${plugin} --tags e2etag,e2ePackage`
+        `generate @design4pro/nx-opencart:theme ${theme} --tags e2etag,e2ePackage`
       );
-      const project = readJson(`apps/${plugin}/project.json`);
+
+      const project = readJson(`apps/${theme}/project.json`);
+
       expect(project.tags).toEqual(['e2etag', 'e2ePackage']);
     }, 120000);
   });

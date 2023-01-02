@@ -3,6 +3,14 @@
   "name": "nx-opencart",
   "version": "0.0.1",
   "generators": {
+    "init": {
+      "factory": "./src/generators/init/init",
+      "schema": "./src/generators/init/schema.json",
+      "description": "Initialize @design4pro/nx-opencart plugin",
+      "aliases": [
+        "ng-add"
+      ]
+    },
     "theme": {
       "factory": "./src/generators/theme/theme",
       "schema": "./src/generators/theme/schema.json",
@@ -10,6 +18,14 @@
     }
   },
   "schematics": {
+    "init": {
+      "factory": "./src/generators/init/init.schematics",
+      "schema": "./src/generators/init/schema.json",
+      "description": "Initialize @design4pro/nx-opencart plugin",
+      "aliases": [
+        "ng-add"
+      ]
+    },
     "theme": {
       "factory": "./src/generators/theme/theme.schematics",
       "schema": "./src/generators/theme/schema.json",

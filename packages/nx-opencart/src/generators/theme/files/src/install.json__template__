@@ -1,0 +1,6 @@
+{
+    "name": "<%= name %>",
+    "version": "0.0.0.1",
+    "author": "DESIGN4PRO",
+    "link": "https://www.design4.pro"
+}

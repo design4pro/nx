@@ -1,5 +1,7 @@
 export interface Schema {
   name: string;
-  tags?: string;
   directory?: string;
+  tags?: string;
+  standaloneConfig?: boolean;
+  skipFormat?: boolean;
 }
