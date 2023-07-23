@@ -8,7 +8,7 @@ import {
   updateProjectConfiguration,
   writeJson,
   logger,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import { Configuration as StylelintConfiguration } from 'stylelint';
 import { ConfigurationGeneratorSchema } from './schema';
 import init from '../init/generator';

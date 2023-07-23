@@ -1,5 +1,5 @@
-import { formatFiles, Tree } from '@nrwl/devkit';
-import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
+import { formatFiles, Tree } from '@nx/devkit';
+import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial';
 import { updateDependencies } from './lib/update-dependencies';
 import { Schema } from './schema';
 

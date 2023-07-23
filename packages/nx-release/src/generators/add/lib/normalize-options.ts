@@ -1,8 +1,4 @@
-import {
-  getWorkspaceLayout,
-  readProjectConfiguration,
-  Tree,
-} from '@nrwl/devkit';
+import { getWorkspaceLayout, readProjectConfiguration, Tree } from '@nx/devkit';
 import { AddSchema } from '../schema';
 
 export interface NormalizedSchema extends AddSchema {

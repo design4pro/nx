@@ -10,7 +10,7 @@ import {
   updateWorkspaceConfiguration,
   WorkspaceConfiguration,
   readJson,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import {
   stylelintConfigIdiomaticOrderVersion,
   stylelintConfigPrettierVersion,
@@ -65,25 +65,22 @@ function checkDependenciesInstalled(host: Tree, rootConfigExists: boolean) {
       !packageJson.dependencies['stylelint-config-idiomatic-order'] &&
       !packageJson.devDependencies['stylelint-config-idiomatic-order']
     )
-      devDependencies[
-        'stylelint-config-idiomatic-order'
-      ] = stylelintConfigIdiomaticOrderVersion;
+      devDependencies['stylelint-config-idiomatic-order'] =
+        stylelintConfigIdiomaticOrderVersion;
 
     if (
       !packageJson.dependencies['stylelint-config-prettier'] &&
       !packageJson.devDependencies['stylelint-config-prettier']
     )
-      devDependencies[
-        'stylelint-config-prettier'
-      ] = stylelintConfigPrettierVersion;
+      devDependencies['stylelint-config-prettier'] =
+        stylelintConfigPrettierVersion;
 
     if (
       !packageJson.dependencies['stylelint-config-standard'] &&
       !packageJson.devDependencies['stylelint-config-standard']
     )
-      devDependencies[
-        'stylelint-config-standard'
-      ] = stylelintConfigStandardVersion;
+      devDependencies['stylelint-config-standard'] =
+        stylelintConfigStandardVersion;
   }
 
   return addDependenciesToPackageJson(host, {}, devDependencies);

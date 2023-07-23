@@ -1,14 +1,16 @@
 {
   "$schema": "http://json-schema.org/schema",
   "id": "NxVscodeExtensionInit",
-  "cli": "nx",
   "title": "Init Nx VSCode Extension Plugin",
   "type": "object",
   "properties": {
     "unitTestRunner": {
       "description": "Adds the specified unit test runner.",
       "type": "string",
-      "enum": ["jest", "none"],
+      "enum": [
+        "jest",
+        "none"
+      ],
       "default": "jest"
     },
     "skipFormat": {

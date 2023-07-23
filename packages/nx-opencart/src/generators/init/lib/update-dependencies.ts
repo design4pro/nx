@@ -1,4 +1,4 @@
-import { addDependenciesToPackageJson, Tree } from '@nrwl/devkit';
+import { addDependenciesToPackageJson, Tree } from '@nx/devkit';
 import {
   autoprefixerVersion,
   cssnanoVersion,
@@ -15,7 +15,7 @@ export function updateDependencies(tree: Tree) {
   const devDependencies = {};
   const dependencies = {};
 
-  dependencies['@nrwl/webpack'] = nxWebpackVersion;
+  dependencies['@nx/webpack'] = nxWebpackVersion;
   dependencies['@tailwindcss/nesting'] = tailwindcssNestingVersion;
   dependencies['autoprefixer'] = autoprefixerVersion;
   dependencies['cssnano'] = cssnanoVersion;

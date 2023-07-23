@@ -5,28 +5,22 @@
   "projectType": "library",
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "packages/nx-custom-webpack/**/*.ts"
-        ]
+        "lintFilePatterns": ["packages/nx-custom-webpack/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/packages/nx-custom-webpack"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/nx-custom-webpack"],
       "options": {
         "jestConfig": "packages/nx-custom-webpack/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "build": {
-      "executor": "@nrwl/js:tsc",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/nx-custom-webpack",
         "tsConfig": "packages/nx-custom-webpack/tsconfig.lib.json",
@@ -58,7 +52,5 @@
       }
     }
   },
-  "tags": [
-    "webpack"
-  ]
+  "tags": ["webpack"]
 }

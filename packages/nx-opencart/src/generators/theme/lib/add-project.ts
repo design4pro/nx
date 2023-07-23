@@ -3,7 +3,7 @@ import {
   readWorkspaceConfiguration,
   Tree,
   updateWorkspaceConfiguration,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import { ProjectConfiguration } from 'nx/src/config/workspace-json-project-json';
 import { joinPathFragments } from 'nx/src/utils/path';
 import { NormalizedSchema } from './normalize-options';

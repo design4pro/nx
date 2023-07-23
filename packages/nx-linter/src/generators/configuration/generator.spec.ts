@@ -1,6 +1,6 @@
-import { logger, readJson, readProjectConfiguration, Tree } from '@nrwl/devkit';
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
-import { libraryGenerator } from '@nrwl/workspace';
+import { logger, readJson, readProjectConfiguration, Tree } from '@nx/devkit';
+import { createTreeWithEmptyV1Workspace } from '@nx/devkit/testing';
+import { libraryGenerator } from '@nx/workspace';
 import { Configuration as StylelintConfiguration } from 'stylelint';
 import generator from './generator';
 import { ConfigurationGeneratorSchema } from './schema';

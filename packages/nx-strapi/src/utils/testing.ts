@@ -1,7 +1,7 @@
 import { Architect } from '@angular-devkit/architect';
 import { TestingArchitectHost } from '@angular-devkit/architect/testing';
 import { schema } from '@angular-devkit/core';
-import { MockBuilderContext } from '@nrwl/workspace/testing';
+import { MockBuilderContext } from '@nx/workspace/testing';
 import { mkdtempSync } from 'fs';
 import { tmpdir } from 'os';
 import { join, sep } from 'path';

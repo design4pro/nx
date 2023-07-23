@@ -1,10 +1,5 @@
-import {
-  getWorkspaceLayout,
-  joinPathFragments,
-  names,
-  Tree,
-} from '@nrwl/devkit';
-import { Linter } from '@nrwl/linter';
+import { getWorkspaceLayout, joinPathFragments, names, Tree } from '@nx/devkit';
+import { Linter } from '@nx/linter';
 import { Schema } from '../schema';
 
 export interface NormalizedSchema extends Schema {

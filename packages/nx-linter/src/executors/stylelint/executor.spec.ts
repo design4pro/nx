@@ -1,8 +1,8 @@
 import { LintExecutorSchema } from './schema';
 import * as fs from 'fs';
-import { ExecutorContext } from '@nrwl/devkit';
+import { ExecutorContext } from '@nx/devkit';
 import { LinterResult } from 'stylelint';
-import { logger } from '@nrwl/devkit';
+import { logger } from '@nx/devkit';
 import { normalize } from 'path';
 import { stylelintConfigFile } from '../../utils/constants';
 import executor from './executor';
@@ -86,7 +86,7 @@ describe('nx-stylelint:lint executor', () => {
     workspace: {
       version: 2,
       projects: {},
-      npmScope: ''
+      npmScope: '',
     },
     isVerbose: false,
   };

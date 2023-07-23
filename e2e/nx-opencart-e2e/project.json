@@ -5,15 +5,14 @@
   "sourceRoot": "e2e/nx-opencart-e2e/src",
   "targets": {
     "e2e": {
-      "executor": "@nrwl/nx-plugin:e2e",
+      "executor": "@nx/jest:jest",
       "options": {
-        "target": "nx-opencart:build",
-        "jestConfig": "e2e/nx-opencart-e2e/jest.config.js"
-      }
+        "jestConfig": "e2e/nx-opencart-e2e/jest.config.js",
+        "runInBand": true
+      },
+      "dependsOn": ["nx-opencart:build"]
     }
   },
   "tags": [],
-  "implicitDependencies": [
-    "nx-opencart"
-  ]
+  "implicitDependencies": ["nx-opencart"]
 }

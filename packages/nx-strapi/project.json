@@ -5,28 +5,22 @@
   "projectType": "library",
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "packages/nx-strapi/**/*.ts"
-        ]
+        "lintFilePatterns": ["packages/nx-strapi/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/packages/nx-strapi"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/nx-strapi"],
       "options": {
         "jestConfig": "packages/nx-strapi/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "build": {
-      "executor": "@nrwl/js:tsc",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/nx-strapi",
         "tsConfig": "packages/nx-strapi/tsconfig.lib.json",
@@ -63,7 +57,5 @@
       }
     }
   },
-  "tags": [
-    "strapi"
-  ]
+  "tags": ["strapi"]
 }

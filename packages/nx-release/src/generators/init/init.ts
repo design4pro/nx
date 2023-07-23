@@ -2,9 +2,9 @@ import {
   addDependenciesToPackageJson,
   formatFiles,
   generateFiles,
+  runTasksInSerial,
   Tree,
-} from '@nrwl/devkit';
-import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
+} from '@nx/devkit';
 import * as path from 'path';
 import { getTemplateOptions } from '../../utils/get-template-options';
 import { nxReleaseVersion, semanticReleaseVersion } from '../../utils/versions';

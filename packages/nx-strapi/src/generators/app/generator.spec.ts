@@ -1,5 +1,5 @@
-import { readProjectConfiguration, Tree } from '@nrwl/devkit';
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { readProjectConfiguration, Tree } from '@nx/devkit';
+import { createTreeWithEmptyV1Workspace } from '@nx/devkit/testing';
 import * as generateStrapi from 'strapi-generate-new';
 import generator from './generator';
 import { NxStrapiGeneratorSchema } from './schema';

@@ -1,5 +1,5 @@
-import { ExecutorContext } from '@nrwl/devkit';
-import runCommands from '@nrwl/workspace/src/executors/run-commands/run-commands.impl';
+import { ExecutorContext } from '@nx/devkit';
+import runCommands from '@nx/workspace/src/executors/run-commands/run-commands.impl';
 import { getProjectConfiguration } from '../../utils/get-project-configuration';
 import { printCommand } from '../../utils/print-command';
 import { BuildExecutorSchema } from './schema';

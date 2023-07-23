@@ -2,7 +2,6 @@
   "version": 2,
   "outputCapture": "direct-nodejs",
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "title": "Stylelint Lint Target",
   "type": "object",
   "additionalProperties": false,
@@ -25,7 +24,14 @@
       "type": "string",
       "description": "Stylelint output formatter (https://stylelint.io/user-guide/usage/options#formatter).",
       "default": "string",
-      "enum": ["compact", "json", "string", "tap", "unix", "verbose"]
+      "enum": [
+        "compact",
+        "json",
+        "string",
+        "tap",
+        "unix",
+        "verbose"
+      ]
     },
     "lintFilePatterns": {
       "type": "array",
@@ -50,5 +56,8 @@
       "default": false
     }
   },
-  "required": ["config", "lintFilePatterns"]
+  "required": [
+    "config",
+    "lintFilePatterns"
+  ]
 }

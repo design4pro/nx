@@ -1,5 +1,5 @@
 import { LintExecutorSchema } from './schema';
-import { ExecutorContext, logger } from '@nrwl/devkit';
+import { ExecutorContext, logger } from '@nx/devkit';
 import { join } from 'path';
 import { writeFileSync } from 'fs';
 import { loadStylelint } from './utils';

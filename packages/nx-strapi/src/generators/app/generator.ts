@@ -5,7 +5,7 @@ import {
   getWorkspaceLayout,
   names,
   Tree,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import * as generateStrapi from 'strapi-generate-new';
 import { NxStrapiGeneratorSchema } from './schema';
 

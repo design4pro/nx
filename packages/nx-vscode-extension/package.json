@@ -27,8 +27,8 @@
   "executors": "./executors.json",
   "peerDependencies": {
     "@design4pro/nx-release": "^1.0.0",
-    "@nrwl/workspace": "*",
-    "@angular-devkit/schematics": "^13.3.3"
+    "@angular-devkit/schematics": "^13.3.3",
+    "@nx/workspace": "*"
   },
   "devDependencies": {
     "request-light": "^0.5.8",

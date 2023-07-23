@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "$id": "NxVscodeExtension",
   "title": "Create a VSCode Extension",
   "examples": [
@@ -73,7 +72,9 @@
     "linter": {
       "description": "The tool to use for running lint checks.",
       "type": "string",
-      "enum": ["eslint"],
+      "enum": [
+        "eslint"
+      ],
       "default": "eslint"
     },
     "importPath": {
@@ -91,5 +92,7 @@
       "default": false
     }
   },
-  "required": ["displayName"]
+  "required": [
+    "displayName"
+  ]
 }

@@ -1,4 +1,4 @@
-import { createTreeWithEmptyV1Workspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyV1Workspace } from '@nx/devkit/testing';
 import {
   Tree,
   readJson,
@@ -6,7 +6,7 @@ import {
   writeJson,
   logger,
   NxJsonConfiguration,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
 import generator from './generator';
 import { InitGeneratorSchema } from './schema';

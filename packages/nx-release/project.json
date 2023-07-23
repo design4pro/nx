@@ -4,10 +4,8 @@
   "sourceRoot": "packages/nx-release/src",
   "targets": {
     "build": {
-      "executor": "@nrwl/js:tsc",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/nx-release",
         "main": "packages/nx-release/src/index.ts",
@@ -38,21 +36,15 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "packages/nx-release/**/*.ts"
-        ]
+        "lintFilePatterns": ["packages/nx-release/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/packages/nx-release"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/nx-release"],
       "options": {
         "jestConfig": "packages/nx-release/jest.config.ts",
         "passWithNoTests": true
@@ -69,7 +61,5 @@
       }
     }
   },
-  "tags": [
-    "release"
-  ]
+  "tags": ["release"]
 }

@@ -5,28 +5,22 @@
   "projectType": "library",
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "packages/nx-linter/**/*.ts"
-        ]
+        "lintFilePatterns": ["packages/nx-linter/**/*.ts"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/packages/nx-linter"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/nx-linter"],
       "options": {
         "jestConfig": "packages/nx-linter/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "build": {
-      "executor": "@nrwl/js:tsc",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/nx-linter",
         "tsConfig": "packages/nx-linter/tsconfig.lib.json",
@@ -63,7 +57,5 @@
       }
     }
   },
-  "tags": [
-    "linter"
-  ]
+  "tags": ["linter"]
 }

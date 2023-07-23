@@ -4,7 +4,7 @@ import {
   readJson,
   runNxCommandAsync,
   uniq,
-} from '@nrwl/nx-plugin/testing';
+} from '@nx/plugin/testing';
 describe('nx-release e2e', () => {
   it('should create nx-release', async () => {
     const plugin = uniq('nx-release');

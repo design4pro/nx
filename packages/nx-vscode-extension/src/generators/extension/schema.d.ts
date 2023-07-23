@@ -1,4 +1,4 @@
-import { Linter } from '@nrwl/linter';
+import { Linter } from '@nx/linter';
 
 // @link https://code.visualstudio.com/api/references/extension-manifest
 export type Categories =

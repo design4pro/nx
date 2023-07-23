@@ -1,5 +1,5 @@
-import { readJson, Tree } from '@nrwl/devkit';
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { readJson, Tree } from '@nx/devkit';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { nxWebpackVersion } from '../../utils/versions';
 import { initGenerator } from './init';
 import { Schema } from './schema';
@@ -19,7 +19,7 @@ describe('init', () => {
 
     expect(packageJson.devDependencies).toEqual(
       expect.objectContaining({
-        '@nrwl/webpack': nxWebpackVersion,
+        '@nx/webpack': nxWebpackVersion,
       })
     );
   });

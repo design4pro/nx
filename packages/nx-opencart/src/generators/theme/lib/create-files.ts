@@ -1,5 +1,5 @@
-import type { Tree } from '@nrwl/devkit';
-import { generateFiles, names, offsetFromRoot } from '@nrwl/devkit';
+import type { Tree } from '@nx/devkit';
+import { generateFiles, names, offsetFromRoot } from '@nx/devkit';
 import { NormalizedSchema } from './normalize-options';
 import { joinPathFragments } from 'nx/src/utils/path';
 

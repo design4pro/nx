@@ -3,7 +3,7 @@ import {
   readJson,
   runNxCommandAsync,
   uniq,
-} from '@nrwl/nx-plugin/testing';
+} from '@nx/plugin/testing';
 
 describe('nx-strapi e2e', () => {
   it('should create nx-strapi', async (done) => {

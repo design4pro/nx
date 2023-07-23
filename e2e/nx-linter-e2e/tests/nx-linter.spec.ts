@@ -4,7 +4,7 @@ import {
   readJson,
   runNxCommandAsync,
   uniq,
-} from '@nrwl/nx-plugin/testing';
+} from '@nx/plugin/testing';
 describe('nx-linter e2e', () => {
   it('should create nx-linter', async (done) => {
     const plugin = uniq('nx-linter');

@@ -1,11 +1,11 @@
-import { names } from '@nrwl/devkit';
+import { names } from '@nx/devkit';
 import {
   checkFilesExist,
   ensureNxProject,
   readJson,
   runNxCommandAsync,
   uniq,
-} from '@nrwl/nx-plugin/testing';
+} from '@nx/plugin/testing';
 
 describe('nx-vscode-extension e2e', () => {
   it('should create nx-vscode-extension', async () => {

@@ -2,8 +2,8 @@ import {
   detectPackageManager,
   readWorkspaceConfiguration,
   Tree,
-} from '@nrwl/devkit';
-import { stringUtils } from '@nrwl/workspace';
+} from '@nx/devkit';
+import { stringUtils } from '@nx/workspace';
 
 export function getDefaultTemplateOptions(tree: Tree) {
   const { npmScope, cli } = readWorkspaceConfiguration(tree);

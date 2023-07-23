@@ -1,7 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
   "id": "NxOpenCartInit",
-  "cli": "nx",
   "title": "Init Nx OpenCart Plugin",
   "type": "object",
   "properties": {

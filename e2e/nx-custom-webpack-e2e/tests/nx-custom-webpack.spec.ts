@@ -4,7 +4,7 @@ import {
   readJson,
   runNxCommandAsync,
   uniq,
-} from '@nrwl/nx-plugin/testing';
+} from '@nx/plugin/testing';
 describe('nx-custom-webpack e2e', () => {
   it('should create nx-custom-webpack', async (done) => {
     const plugin = uniq('nx-custom-webpack');

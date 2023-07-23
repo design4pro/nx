@@ -2,7 +2,7 @@ import {
   joinPathFragments,
   ProjectConfiguration,
   TargetConfiguration,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import { NormalizedSchema } from './normalize-options';
 
 export function getServeConfig(
@@ -10,7 +10,7 @@ export function getServeConfig(
   options: NormalizedSchema
 ): TargetConfiguration {
   return {
-    executor: '@nrwl/webpack:dev-server',
+    executor: '@nx/webpack:dev-server',
     options: {
       outputPath: joinPathFragments('dist', options.projectRoot),
     },

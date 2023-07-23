@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "id": "NxLinterStylelintProjectConfiguration",
   "title": "Add stylelint configuration to a project",
   "type": "object",
@@ -10,7 +9,14 @@
       "type": "string",
       "description": "Stylelint output formatter (https://stylelint.io/user-guide/usage/options#formatter).",
       "default": "string",
-      "enum": ["compact", "json", "string", "tap", "unix", "verbose"],
+      "enum": [
+        "compact",
+        "json",
+        "string",
+        "tap",
+        "unix",
+        "verbose"
+      ],
       "x-prompt": {
         "message": "Which formatter would you like to use?",
         "type": "list",
@@ -55,5 +61,7 @@
       "default": false
     }
   },
-  "required": ["project"]
+  "required": [
+    "project"
+  ]
 }

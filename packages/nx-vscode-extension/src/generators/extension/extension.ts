@@ -6,9 +6,9 @@ import {
   names,
   offsetFromRoot,
   Tree,
-} from '@nrwl/devkit';
-import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
-import { getRelativePathToRootTsConfig } from '@nrwl/workspace/src/utilities/typescript';
+} from '@nx/devkit';
+import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial';
+import { getRelativePathToRootTsConfig } from '@nx/workspace/src/utilities/typescript';
 import * as path from 'path';
 import { getLatestVSCodeVersion } from '../../utils/env';
 import { getDefaultTemplateOptions } from '../../utils/general';
@@ -60,7 +60,10 @@ async function addFiles(tree: Tree, options: NormalizedSchema) {
   );
 }
 
-export async function extensionGenerator(tree: Tree, options: Schema): Promise<GeneratorCallback> {
+export async function extensionGenerator(
+  tree: Tree,
+  options: Schema
+): Promise<GeneratorCallback> {
   const normalizedOptions = normalizeOptions(tree, options);
 
   await addFiles(tree, normalizedOptions);
